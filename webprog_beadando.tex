@@ -17,24 +17,87 @@
 
 \section{Weboldal koncepciója}
 \subsection{Technikai részletek}
-A beadandó feladatot, az órán is alkalmazott \textit{xamp} szerverrel kívánom megvalósítani, \textit{apache netbeans} fejlesztőkörnyezettel. A mysql kezelését a videóban is használt, \textit{phpmyadmin} oldalon intézem. Nem fontos részlet, a megvalósítás szempontjából, de a windows operációs rendszer, virtuális gépként fut.
+A beadandó feladatot, az órán is alkalmazott \textit{xampp} szerverrel kívánom megvalósítani, \textit{apache netbeans} fejlesztőkörnyezettel. A Mysql kezelését a videóban is használt, \textit{phpmyadmin} oldalon intézem. Nem fontos részlet, a megvalósítás szempontjából, de a Windows operációs rendszer, virtuális gépként fut.
+
+\begin{center}
+	\textit{{\footnotesize (Követelmény: A beadandó feladat PHP MVC kereterendszerben készül!)}}
+\end{center}
 
 \begin{itemize}
 	\item OS: Windows 10 Pro (21H1)
 	\item Kernel: 10.0.19041.1023
 	\item Mysql: 10.4.19-MariaDB
 	\item PHP: 8.0.6
+	\item Apache Netbeans IDE: 12.3
+	\item CodeIgniter: 3.1.11
 \end{itemize}
 
 \subsection{Elképzelés}
-A weboldal egy \textit{fiktív} szervezet köré épül, aminek a feladata  az \textit{állategészségügy}, és \textit{állatvédelem}. A fiktív szervezetnek több városban lesznek épületei országszerte. Egy városban több különféle épület is tartozhat az adott telephez. Például tartozhat állatmenhely, állatorvosi rendelő, raktárépület stb. Ezeknek az épületeknek vannak hozzájuk tartozó egységek. Egy menhely állatok tárolására alkalmas kennelekkel, egy rendelő/raktár szobákkal rendelkezik. 
+A weboldal egy \textit{fiktív} szervezet köré épül, aminek a feladata  az \textit{állategészségügy}, és \textit{állatvédelem}. A fiktív szervezetnek több városban lesznek épületei országszerte. Egy városban több különféle épület is tartozhat a szervezethez. Például tartozhat állatmenhely, állatorvosi rendelő, raktárépület stb. Ezeknek az épületeknek vannak hozzájuk tartozó egységeik. Egy menhely állatok tárolására alkalmas kennelekkel, egy rendelő vizsgálóval, váróval, egy raktár szobákkal, szektorokkal rendelkezik stb.
+
+Hasonlóképpen az egyetemi példafeladathoz, ahol
+\begin{center}
+	Kampusz -> Épület -> Terem \\[0.5cm]
+	Pl.: Eger -> C épület -> 124-es terem,
+\end{center}
+felosztás található, itt is három rétegre kívánom felosztani a problémát, mégpedig:
+\begin{center}
+	Telep -> Épület -> 'Szoba'\\[0.5cm]
+	Pl.: Miskolc -> Iroda -> 1-es iroda\\
+	vagy\\
+	Eger -> Egri állatmenhely -> 3-as Kennel.
+\end{center}
+
+A weboldal célja, tehát hogy a szervezet irányítani tudja a különböző városaiban található épületcsoportokat, pénzmozgásokat, alkalmazottakat stb.
+A fiktív szervezetet, az előző beadandóm állatotthonából fejlesztem tovább, részben idő spórolás céljából, részben a hasonló koncepcióból adódóan. Szervezet neve: \textbf{Kék mancs}.
+
+Más lesz fontos egy iroda vezetőjének, és más feladatokat kell végeznie egy alkalmazottnak. Az \textit{elképzelés} szerint, a felhasználókat több rétegben kezeljük majd. A weboldal nem a nyilvánosság felé közvetített oldal, hanem belső rendszerért felelős. Ettől függetlenül szükség lesz, telepenként admin, és felhasználói felületre. 
+
 
 \section{Adatbázis tervezése}
+
+Szükségünk lesz, egy \textbf{épület} entitásra, egy '\textbf{szoba}' entitásra. Ennek a megnevezése, nem teljesen fedi le a pontos entitást, hiszen minden épületben ez mást reprezentál, azonban szükséges eltárolnunk, hogy melyik állat melyik kennelhez van rendelve, vagy hogy melyik alkalmazott melyik irodában dolgozik stb. Szükségünk lesz egy \textbf{állat} entitásra is, hogy eltároljuk a különféle állatokat, amik a szervezethez köthetőek. Tárolnunk kell az \textbf{alkalmazottakat} is, és a beérkezett \textbf{adományokat}. Amennyiben lesz elég idő a fejlesztés során, az alkalmazottak \textbf{képzettségi mátrixát} is szeretném tárolni, ami egy gyakorlatból átemelt problémára nyújt megoldást.
+
+\begin{center}
+	\textit{{\footnotesize (A megvalósítandó projekthez tartozó adatmodell legalább 5 forgalmi adattáblát tartalmaz (a külső modulok által használt táblákon kívül).)}}
+\end{center}
+
+
+
+
 \subsection{ER modell}
+Az ER modell tervezése közben vegyük szemügyre nagyobb részletességgel az entitásokat, majd szemléltessük grafikusan. A grafikus szemléltetésre a \textit{Draw.io} asztali alkalmazását használom.
+
+\subsubsection*{Épület}
+
+Az \textbf{Épület} entitás kapcsán, tárolnunk kell a \textit{megnevezését}, a \textit{várost}, és félreértések elkerülése érdekében a \textit{típusát}. Általánosságban kijelenthetjük, hogy egy városban, több azonos típusú épület is előfordulhat (két iroda, két raktár), viszont ugyan abban a városban, két azonos megnevezésű épület nem lehet. Ettől függetlenül, az egyszerűség kedvéért egy \textit{azonosító} mezővel fogjuk ellátni az épületeket. A következőkben részletezett \textbf{szoba} entitás minden esetben tartozik egy épülethez.
+
+
+\begin{center}
+	{\small \textit{Egy szoba, csak egy épülethez tartozhat, de egy épülethez több szoba \textit{(1:N)}}}
+
+	{\small \textit{Egy épülethez, több alkalmazott, de egy alkalmazott, egy épülethez rendelt. \textit{(1:N)}}}
+\end{center}
+
+\subsubsection*{Szoba}
+
+Egy \textbf{szoba}, egy épület alegysége. Tárolnunk kell a \textit{kapacitását}. Attól függetlenül, hogy egy épület meghatározza, hogy milyen típusú szobákkal rendelkezik, ettől függetlenül, lehetőséget kell biztosítanunk a variációknak. Például egy Állatotthon is rendelkezhet kenneleken kívül váróval stb. Ezért tárolnunk kell a szoba \textit{típusát} is.
+
+\begin{center}
+	\textit{{\small Egy szobához több állat/alkalmazott tartozhat, de egy állat/alkalmazott csak egy szobához.\textit{(1:N)}}}
+\end{center}
+
+\subsubsection{Állat}
+Egy állat esetén, tárolnunk kell a \textit{nevét}, \textit{típusát}, \textit{Születési évét} és \textit{nemét}.
+Ezenkívül kap egy azonosítómezőt, és el kell tárolnunk melyik szobához tartozik.
+\subsubsection*{Alkalmazott}
+Az alkalmazottak esetén, tároljuk el az alkalmazott teljes \textit{nevét}, \textit{születési dátumát}, alkalmazotti \textit{jogviszonyát}, weboldalon használható \textit{felhasználónevét}, \textit{jelszavát}, és az \textit{épületet} amihez kirendelt.
+
+
 \subsection{Relációs adatmodell}
 \subsection{SQL parancsok}
 \subsubsection{Táblák létrehozása}
-
+\section{Összefoglaló}
 
 
 \end{document}
