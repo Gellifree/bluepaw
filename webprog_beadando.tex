@@ -68,36 +68,30 @@ Szükségünk lesz, egy \textbf{épület} entitásra, egy '\textbf{szoba}' entit
 
 
 \subsection{ER modell}
-Az ER modell tervezése közben vegyük szemügyre nagyobb részletességgel az entitásokat, majd szemléltessük grafikusan. A grafikus szemléltetésre a \textit{Draw.io} asztali alkalmazását használom.
+Az ER modell tervezése közben vegyük szemügyre nagyobb részletességgel az entitásokat. Az egyedi azonosító mezőket, nem tüntetjük fel a tervezés során, csak az ER modellben. A grafikus szemléltetésre a \textit{Draw.io} asztali alkalmazását használom.
+
+\subsubsection*{Telep}
+Egy \textbf{Telep} eltárolásához, elegendő a telep \textit{megnevezése}, ami gyakorlatilag csak a város neve lesz, és egy \textit{leírás} mező. Egy \textbf{Telephez} több \textbf{Épület} tartozhat majd, értelemszerűen egy \textbf{Épület}, csak egy \textbf{Telephez}.
 
 \subsubsection*{Épület}
 
-Az \textbf{Épület} entitás kapcsán, tárolnunk kell a \textit{megnevezését}, a \textit{várost}, és félreértések elkerülése érdekében a \textit{típusát}. Általánosságban kijelenthetjük, hogy egy városban, több azonos típusú épület is előfordulhat (két iroda, két raktár), viszont ugyan abban a városban, két azonos megnevezésű épület nem lehet. Ettől függetlenül, az egyszerűség kedvéért egy \textit{azonosító} mezővel fogjuk ellátni az épületeket. A következőkben részletezett \textbf{szoba} entitás minden esetben csak egy épülethez tartozik.
-
-
-\begin{center}
-	{\small \textit{Egy szoba, csak egy épülethez tartozhat, de egy épülethez több szoba \textit{(1:N)}}}
-
-	{\small \textit{Egy épülethez, több alkalmazott, de egy alkalmazott, egy épülethez rendelt. \textit{(1:N)}}}
-\end{center}
+Az \textbf{Épület} entitás kapcsán, tárolnunk kell a \textit{megnevezését}, a \textit{telepet}, és a \textit{típusát}. Általánosságban kijelenthetjük, hogy egy \textbf{Telephez}, több azonos típusú épület is tartozhat (két iroda, két raktár).
 
 \subsubsection*{Szoba}
 
 Egy \textbf{szoba}, egy épület alegysége. Tárolnunk kell a \textit{kapacitását}. Attól függetlenül, hogy egy épület meghatározza, hogy milyen típusú szobákkal rendelkezik, ettől függetlenül, lehetőséget kell biztosítanunk a variációknak. Például egy Állatotthon is rendelkezhet kenneleken kívül váróval stb. Ezért tárolnunk kell a szoba \textit{típusát} is.
 
-\begin{center}
-	\textit{{\small Egy szobához több állat/alkalmazott tartozhat, de egy állat/alkalmazott csak egy szobához.\textit{(1:N)}}}
-\end{center}
-
 \subsubsection*{Állat}
-Egy állat esetén, tárolnunk kell a \textit{nevét}, \textit{típusát}, \textit{Születési évét} és \textit{nemét}.
-Ezenkívül kap egy azonosítómezőt, és el kell tárolnunk melyik szobához tartozik.
+Egy állat esetén, tárolnunk kell a \textit{nevét}, \textit{típusát}, \textit{születési évét}, \textit{nemét}, és hogy melyik ,,szobához'' tartozik. Itt a későbbiekben, valamilyen hibaellenőrzésre szükség lesz, hogy egy állatot, ne lehessen hozzárendelni, egy iroda szobához, vagy egy irodai alkalmazottat, egy kennelhez. Amennyiben tárolni akarjuk, az örökbefogadás eseményét, akkor egy \textit{tulajdonos} mezőt is fel kell vennünk.
+
 \subsubsection*{Alkalmazott}
-Az alkalmazottak esetén, tároljuk el az alkalmazott teljes \textit{nevét}, \textit{születési dátumát}, alkalmazotti \textit{jogviszonyát}, weboldalon használható \textit{felhasználónevét}, \textit{jelszavát}, és az \textit{épületet} amihez kirendelt.
+Az alkalmazottak esetén, tároljuk el az alkalmazott teljes \textit{nevét}, \textit{születési dátumát}, alkalmazotti \textit{jogviszonyát}, weboldalon használható \textit{felhasználónevét}, \textit{jelszavát}, és az \textit{épületet} amihez kirendelt. Az alkalmazott munkaköre, meghatározza majd a fizetést is, amit külön entitásként fogunk kezelni.
+
+\subsubsection*{Jogviszony}
+A Jogviszonynak tároljuk a \textit{megnevezését}, és a \textit{fizetés értékét}. Mivel, nem lehet, két ugyanolyan megnevezésű munkakör, külön fizetéssel, ezért nincs szükségünk, külön azonosítómezőre. 
+
 \subsubsection*{Örökbefogadó}
-Egy örökbefogadó személy kapcsán, el kell tárolnunk az \textit{nevét}, \textit{Születési évét}, \textit{lakhelyét}, jelenleg birtokolt \textit{háziállatok számát},  és hogy \textit{javasolt-e örökbefogadásra}.
-
-
+Egy örökbefogadó személy kapcsán, el kell tárolnunk az \textit{nevét}, \textit{születési évét}, \textit{lakhelyét}, jelenleg birtokolt \textit{háziállatok számát},  és hogy \textit{javasolt-e örökbefogadásra}.
 
 \begin{center}
 	\includegraphics[width = 17cm]{"SQL_tervezés.png"} \\
