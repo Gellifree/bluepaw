@@ -5,6 +5,15 @@
 \usepackage[a4paper]{geometry}
 \geometry{margin=2cm}
 \usepackage{graphicx}
+\usepackage{fancyhdr}
+
+
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LE,RO]{\normalfont\normalsize\thepage}
+\fancyhead[RE]{\nouppercase{\sffamily\small\leftmark}}
+\fancyhead[LO]{\nouppercase{\sffamily\small\rightmark}}
 
 
 \begin{document}
@@ -58,50 +67,63 @@ Az \textit{elképzelés} szerint, a felhasználókat több rétegben kezeljük m
 
 \section{Adatbázis tervezése}
 
-Szükségünk lesz, egy \textbf{épület} entitásra, egy '\textbf{szoba}' entitásra. Ennek a megnevezése, nem teljesen fedi le a pontos entitást, hiszen minden épületben ez mást reprezentál, azonban szükséges eltárolnunk, hogy melyik állat melyik kennelhez van rendelve, vagy hogy melyik alkalmazott melyik irodában dolgozik stb. Szükségünk lesz egy \textbf{állat} entitásra is, hogy eltároljuk a különféle állatokat, amik a szervezethez köthetőek. Tárolnunk kell az \textbf{alkalmazottakat} is, és az \textbf{örökbefogadók} személyeit. Amennyiben lesz elég idő a fejlesztés során, az alkalmazottak \textbf{képzettségi mátrixát} is szeretném tárolni, ami egy gyakorlatból átemelt problémára nyújt megoldást.
+Az első entitásunk, egy \textbf{Telep} entitás lesz. Itt nem egy konkrét Telephelyről van szó, hanem egy olyan összefoglaló jelzőről, mint az egyetem kapcsán a Campus-ról. Ennél találóbb, vagy pontosabb megnevezést nem tudtam kitalálni, ami összefoglalja az egy városban található épületcsoportokat. Szükségünk lesz, egy \textbf{épület} entitásra és egy '\textbf{szoba}' entitásra. Ennek a megnevezése, nem teljesen fedi le a pontos szerepet, hiszen minden épületben ez mást reprezentál, azonban szükséges eltárolnunk, hogy melyik állat melyik kennelhez van rendelve, vagy hogy melyik alkalmazott melyik irodában dolgozik stb. Itt majd valamilyen módon, implementálnunk kellene, egy hibakezelést, arra való tekintettel, hogy ne lehessen egy állatot, egy irodaszobához rendelni, vagy egy alkalmazottat, egy kennelhez. Szükségünk lesz egy \textbf{állat} entitásra is, hogy eltároljuk a különféle állatokat, amik a szervezethez köthetőek. Tárolnunk kell az \textbf{alkalmazottakat} is, és az \textbf{örökbefogadók} személyeit. Ezenkívül egy \textbf{Jogviszony} táblában, eltároljuk a munkaköröket, és a hozzájuk tartozó fizetést.
 
-\begin{center}
-	\textit{{\footnotesize (A megvalósítandó projekthez tartozó adatmodell legalább 5 forgalmi adattáblát tartalmaz (a külső modulok által használt táblákon kívül).)}}
-\end{center}
-
-
+Ebben a felállásban is 8 forgalmi adattábláról van szó, ami túllépi a követelményben megjelölt minimális mennyiséget. Ahhoz, hogy a weboldal megközelítse a valóságban ,,alkalmazható'' jelzőt, még rengeteg entitásra lenne szükségünk, azonban az egyszerűség kedvéért nem bővítjük tovább az adatbázist, el kell fogadnom, hogy a jövőben ez okozhat \textit{hiányos funkciókat}.
 
 
 \subsection{ER modell}
-Az ER modell tervezése közben vegyük szemügyre nagyobb részletességgel az entitásokat. Az egyedi azonosító mezőket, nem tüntetjük fel a tervezés során, csak az ER modellben. A grafikus szemléltetésre a \textit{Draw.io} asztali alkalmazását használom.
+A pluszba kapott egyedi azonosító mezőket, és az idegen kulcsokat nem tüntetjük fel a tervezés során.
 
-\subsubsection*{Telep}
-Egy \textbf{Telep} eltárolásához, elegendő a telep \textit{megnevezése}, ami gyakorlatilag csak a város neve lesz, és egy \textit{leírás} mező. Egy \textbf{Telephez} több \textbf{Épület} tartozhat majd, értelemszerűen egy \textbf{Épület}, csak egy \textbf{Telephez}.
-
-\subsubsection*{Épület}
-
-Az \textbf{Épület} entitás kapcsán, tárolnunk kell a \textit{megnevezését}, a \textit{telepet}, és a \textit{típusát}. Általánosságban kijelenthetjük, hogy egy \textbf{Telephez}, több azonos típusú épület is tartozhat (két iroda, két raktár).
-
-\subsubsection*{Szoba}
-
-Egy \textbf{szoba}, egy épület alegysége. Tárolnunk kell a \textit{kapacitását}. Attól függetlenül, hogy egy épület meghatározza, hogy milyen típusú szobákkal rendelkezik, ettől függetlenül, lehetőséget kell biztosítanunk a variációknak. Például egy Állatotthon is rendelkezhet kenneleken kívül váróval stb. Ezért tárolnunk kell a szoba \textit{típusát} is.
-
-\subsubsection*{Állat}
-Egy állat esetén, tárolnunk kell a \textit{nevét}, \textit{típusát}, \textit{születési évét}, \textit{nemét}, és hogy melyik ,,szobához'' tartozik. Itt a későbbiekben, valamilyen hibaellenőrzésre szükség lesz, hogy egy állatot, ne lehessen hozzárendelni, egy iroda szobához, vagy egy irodai alkalmazottat, egy kennelhez. Amennyiben tárolni akarjuk, az örökbefogadás eseményét, akkor egy \textit{tulajdonos} mezőt is fel kell vennünk.
-
-\subsubsection*{Alkalmazott}
-Az alkalmazottak esetén, tároljuk el az alkalmazott teljes \textit{nevét}, \textit{születési dátumát}, alkalmazotti \textit{jogviszonyát}, weboldalon használható \textit{felhasználónevét}, \textit{jelszavát}, és az \textit{épületet} amihez kirendelt. Az alkalmazott munkaköre, meghatározza majd a fizetést is, amit külön entitásként fogunk kezelni.
-
-\subsubsection*{Jogviszony}
-A Jogviszonynak tároljuk a \textit{megnevezését}, és a \textit{fizetés értékét}. Mivel, nem lehet, két ugyanolyan megnevezésű munkakör, külön fizetéssel, ezért nincs szükségünk, külön azonosítómezőre. 
-
-\subsubsection*{Örökbefogadó}
-Egy örökbefogadó személy kapcsán, el kell tárolnunk az \textit{nevét}, \textit{születési évét}, \textit{lakhelyét}, jelenleg birtokolt \textit{háziállatok számát},  és hogy \textit{javasolt-e örökbefogadásra}.
+\begin{enumerate}
+	\item Telep \\
+	Egy Telep eltárolásához, elegendő a telep \textit{megnevezése} (ami gyakorlatilag a város neve), és egy \textit{leírás} mező.
+	
+	\item Épület \\
+	Az épület entitás kapcsán, elég tárolnunk az épület \textit{megnevezését}, és \textit{típusát}.
+	
+	\item Szoba \\
+	Egy épület alegysége, a szoba entitás lesz. Elegendő tárolnunk a \textit{típusát}, és a \textit{kapacitását}.
+	
+	\item Állat \\
+	Egy állat esetén, tárolnunk kell a \textit{nevét}, \textit{típusát}, \textit{születési évét} és \textit{nemét}. Az állat \textit{életkora}, származtatott tulajdonság lesz.
+	
+	\item Alkalmazott \\
+	Az alkalmazottak esetén, tároljuk el az alkalmazott teljes \textit{nevét}, a weboldalon használható \textit{felhasználónevét} és \textit{jelszavát}.
+	
+	\item Jogviszony \\
+	A Jogviszonynak tároljuk a \textit{megnevezését}, és a \textit{fizetés értékét}. Mivel, nem lehet, két ugyanolyan megnevezésű munkakör, külön fizetéssel, ezért nincs szükségünk, külön azonosítómezőre. 
+	
+	\item Örökbefogadó \\
+	Egy örökbefogadó személy kapcsán, el kell tárolnunk az \textit{nevét}, \textit{lakhelyét}, jelenleg birtokolt \textit{háziállatok számát},  és hogy \textit{javasolt-e örökbefogadásra}.
+	
+	\item Esemény \\
+	Egy eseményről eltároljuk a \textit{megnevezését}, \textit{időpontját}, és \textit{leírását}.
+\end{enumerate}
 
 \begin{center}
 	\includegraphics[width = 17cm]{"SQL_tervezés.png"} \\
 	{\small Az ER modell}
 \end{center}
 
-
+\begin{center}
+	\textit{{\small ,,A megvalósítandó projekthez tartozó adatmodell legalább 5 forgalmi adattáblát tartalmaz (a külső modulok által használt táblákon kívül). Az adatmodell legalább 3. normálformában van és modellben megtalálható az egy-több, valamint a több-több típusú kapcsolat is. A technikai okokból létrehozott táblák (kapcsolótáblák) nem tekintendőek forgalmi táblának.''}}
+\end{center}
+\newpage
 \subsection{Relációs adatmodell}
+Az elkészült modell alapján, a következő táblák jöttek létre.
+\begin{center}
+	\includegraphics[width = 15cm]{"SQL_Táblák.png"} \\
+	{\small Az ER modell}
+\end{center}
+Hozzuk létre a szükséges kapcsolótáblákat, és illesszük be az idegen kulcsokat, majd jelöljük a kapcsolatokat.
+
+\begin{center}
+	\includegraphics[width = 18cm]{"SQL_Táblák_kapcsolatok.png"} \\
+	{\small Az ER modell a kapcsolatokkal}
+\end{center}
 \subsection{SQL parancsok}
-\subsubsection{Táblák létrehozása}
+Az SQL parancsok megtalálhatóak az application/create.sql fájlban.
 \section{Összefoglaló}
 
 

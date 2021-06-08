@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/Debian) (preloaded format=pdflatex 2021.4.27)  8 JUN 2021 14:55
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/Debian) (preloaded format=pdflatex 2021.4.27)  8 JUN 2021 16:31
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -97,6 +97,27 @@ File: pdftex.def 2018/01/08 v1.0l Graphics/color driver for pdftex
 \Gin@req@height=\dimen144
 \Gin@req@width=\dimen145
 )
+(/usr/share/texlive/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty
+Package: fancyhdr 2019/01/31 v3.10 Extensive control of page headers and footer
+s
+\f@nch@headwidth=\skip49
+\f@nch@O@elh=\skip50
+\f@nch@O@erh=\skip51
+\f@nch@O@olh=\skip52
+\f@nch@O@orh=\skip53
+\f@nch@O@elf=\skip54
+\f@nch@O@erf=\skip55
+\f@nch@O@olf=\skip56
+\f@nch@O@orf=\skip57
+)
+
+Package Fancyhdr Warning: \fancyhead's `E' option without twoside option is use
+less on input line 14.
+
+
+Package Fancyhdr Warning: \fancyhead's `E' option without twoside option is use
+less on input line 15.
+
 (/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-pdfmode.def
 File: l3backend-pdfmode.def 2020-06-29 L3 backend support: PDF mode
 \l__kernel_color_stack_int=\count184
@@ -105,20 +126,24 @@ File: l3backend-pdfmode.def 2020-06-29 L3 backend support: PDF mode
 (./webprog_beadando.aux)
 \openout1 = `webprog_beadando.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 10.
-LaTeX Font Info:    ... okay on input line 10.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 10.
-LaTeX Font Info:    ... okay on input line 10.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 10.
-LaTeX Font Info:    ... okay on input line 10.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 10.
-LaTeX Font Info:    ... okay on input line 10.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 10.
-LaTeX Font Info:    ... okay on input line 10.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 10.
-LaTeX Font Info:    ... okay on input line 10.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 10.
-LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+
+
+Package magyar.ldf Warning: No effect on fancyhdr.sty,
+(magyar.ldf)                please load it before \usepackage[magyar]{babel}.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -181,9 +206,9 @@ LaTeX Info: Redefining \cal on input line 497.
 LaTeX Info: Redefining \mit on input line 498.
 )
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <14.4> on input line 13.
+(Font)              <14.4> on input line 22.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 13.
+(Font)              <7> on input line 22.
  [1
 
 
@@ -198,35 +223,65 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 \tf@toc=\write3
 \openout3 = `webprog_beadando.toc'.
 
- [2] [3] [4]
-<SQL_tervezés.png, id=24, 2499.3375pt x 2170.1075pt>
+LaTeX Font Info:    Trying to load font information for T1+cmss on input line 2
+5.
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/t1cmss.fd
+File: t1cmss.fd 2019/12/16 v2.5j Standard LaTeX font definitions
+)
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+Make it at least 14.49998pt.
+We now make it that large for the rest of the document.
+This may cause the page layout to be inconsistent, however.
+
+[2] [3]
+<SQL_tervezés.png, id=22, 2499.3375pt x 2170.1075pt>
 File: SQL_tervezés.png Graphic file (type png)
 <use SQL_tervezés.png>
-Package pdftex.def Info: SQL_tervezés.png  used on input line 97.
+Package pdftex.def Info: SQL_tervezés.png  used on input line 105.
 (pdftex.def)             Requested size: 483.69684pt x 419.97385pt.
+ [4] [5 <./SQL_Tervezés.png>]
+<SQL_Táblák.png, id=33, 1608.0075pt x 855.195pt>
+File: SQL_Táblák.png Graphic file (type png)
+<use SQL_Táblák.png>
+Package pdftex.def Info: SQL_Táblák.png  used on input line 116.
+(pdftex.def)             Requested size: 426.79134pt x 226.97792pt.
+<SQL_Táblák_kapcsolatok.png, id=34, 2013.5225pt x 991.705pt>
+File: SQL_Táblák_kapcsolatok.png Graphic file (type png)
+<use SQL_Táblák_kapcsolatok.png>
+Package pdftex.def Info: SQL_Táblák_kapcsolatok.png  used on input line 122.
+(pdftex.def)             Requested size: 512.1496pt x 252.23831pt.
 
-[5 <./SQL_Tervezés.png>] (./webprog_beadando.aux) ) 
+Overfull \hbox (28.45273pt too wide) in paragraph at lines 122--122
+ [] 
+ []
+
+[6 <./SQL_Táblák.png> <./SQL_Táblák_kapcsolatok.png>]
+(./webprog_beadando.aux) ) 
 Here is how much of TeX's memory you used:
- 3676 strings out of 480906
- 56216 string characters out of 5910772
- 324882 words of memory out of 5000000
- 19266 multiletter control sequences out of 15000+600000
- 547628 words of font info for 53 fonts, out of 8000000 for 9000
+ 3843 strings out of 480906
+ 58779 string characters out of 5910772
+ 327726 words of memory out of 5000000
+ 19421 multiletter control sequences out of 15000+600000
+ 549860 words of font info for 56 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 36i,6n,39p,792b,363s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texmf/fonts/enc
-/dvips/cm-super/cm-super-t1.enc}</usr/share/texmf/fonts/type1/public/cm-super/s
-fbx1200.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx1440.pfb></usr/sh
-are/texmf/fonts/type1/public/cm-super/sfbx1728.pfb></usr/share/texmf/fonts/type
-1/public/cm-super/sfcc1200.pfb></usr/share/texmf/fonts/type1/public/cm-super/sf
-cc2074.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1095.pfb></usr/sha
-re/texmf/fonts/type1/public/cm-super/sfrm1200.pfb></usr/share/texmf/fonts/type1
-/public/cm-super/sfrm1440.pfb></usr/share/texmf/fonts/type1/public/cm-super/sft
-i1000.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfti1200.pfb>
-Output written on webprog_beadando.pdf (5 pages, 404925 bytes).
+ 36i,11n,45p,1240b,365s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-t
+1.enc}</usr/share/texmf/fonts/type1/public/cm-super/sfbx1200.pfb></usr/share/te
+xmf/fonts/type1/public/cm-super/sfbx1440.pfb></usr/share/texmf/fonts/type1/publ
+ic/cm-super/sfbx1728.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfcc1200
+.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfcc2074.pfb></usr/share/tex
+mf/fonts/type1/public/cm-super/sfrm1095.pfb></usr/share/texmf/fonts/type1/publi
+c/cm-super/sfrm1200.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1440.
+pfb></usr/share/texmf/fonts/type1/public/cm-super/sfss1095.pfb></usr/share/texm
+f/fonts/type1/public/cm-super/sfti1000.pfb></usr/share/texmf/fonts/type1/public
+/cm-super/sfti1095.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfti1200.p
+fb>
+Output written on webprog_beadando.pdf (6 pages, 552234 bytes).
 PDF statistics:
- 64 PDF objects out of 1000 (max. 8388607)
- 44 compressed objects within 1 object stream
+ 79 PDF objects out of 1000 (max. 8388607)
+ 52 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 6 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 16 words of extra memory for PDF output out of 10000 (max. 10000000)
 
