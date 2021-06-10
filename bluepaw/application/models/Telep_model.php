@@ -50,6 +50,18 @@ class Telep_model extends CI_Model{
         return $this->db->delete('telep');
     }
     
+    
+    public function update($id, $nev, $leiras)
+    {
+        $record = [
+            'nev' => $nev,
+            'leiras' => $leiras,
+        ];
+        
+        $this->db->where('id', $id);
+        return $this->db->update('telep', $record);
+    }
+    
     public function insert($nev, $leiras)
     {
         $record = [

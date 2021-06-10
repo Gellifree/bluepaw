@@ -9,7 +9,8 @@
         <thead>
             <tr>
                 <th> Azonosító  </th>
-                <th> Név        </th>
+                <th> Megnevezés </th>
+                <th> Telep  </th>
                 <th> Műveletek  </th>
             </tr>
         </thead>
@@ -17,11 +18,12 @@
         <?php foreach ($records as $record): ?>
             <tr>    
                 <td> <?=$record->id?> </td>
-                <td> <?=$record->nev?> </td>
+                <td> <?=$record->megnevezes?> </td>
+                <td> <?=$record->telep_nev?> </td>
                 <td>
-                    <?php echo anchor(base_url('telep/list/'.$record->id), 'Részletek'); ?>
-                    <?php echo anchor(base_url('telep/delete/'.$record->id), 'Törlés'); ?>
-                    <?php echo anchor(base_url('telep/update/'.$record->id), 'Szerkesztés'); ?>
+                    <?php echo anchor(base_url('epulet/list/'.$record->id), 'Részletek'); ?>
+                    <?php echo anchor(base_url('epulet/delete/'.$record->id), 'Törlés'); ?>
+                    <?php echo anchor(base_url('epulet/update/'.$record->id), 'Szerkesztés'); ?>
                 </td>
             </tr>
         <?php endforeach; ?>

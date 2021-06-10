@@ -91,9 +91,56 @@ class Telep extends CI_Controller{
         
     }
     
-    public function update()
+    public function update($telep_id = NULL)
     {
-        echo "update";
+        $this->load->helper('url');
+        if($telep_id == NULL)
+        {
+            redirect(base_url('telep/list'));
+        }
+        
+        if(!is_numeric($telep_id))
+        {
+            redirect(base_url('telep/list'));
+        }
+        
+        $record = $this->telep_model->get_one($telep_id);
+        
+        if($record == NULL || empty($record))
+        {
+            redirect(base_url('telep/list'));
+        }
+        
+        $this->load->library('form_validation');
+        $this->form_validation->set_rules('telep_nev', 'Telep neve', 'required|min_length[2]');
+        
+        if($this->form_validation->run() == TRUE)
+        {
+            $nev = $this->input->post('telep_nev');
+            $leiras = !empty($this->input->post('telep_leiras')) ? $this->input->post('telep_leiras') : NULL;
+            
+            if($this->telep_model->update($telep_id, $nev, $leiras))
+            {
+                redirect(base_url('telep/list'));
+            }
+            else
+            {
+                show_error('Sikertelen módosítás!');
+            }
+        }
+        else
+        {
+            $view_params = [
+                'record' => $record
+            ];
+        
+            $this->load->helper('form');
+            $this->load->view('telep/edit', $view_params);
+        }
+                
+        
+        
+        
     }
     
     public function delete($telep_id = NULL)
