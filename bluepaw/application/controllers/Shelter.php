@@ -22,8 +22,8 @@ class Shelter extends CI_Controller{
     //funkciókhoz, publikus metódusok kellenek
     public function list($campus_id = NULL)
     {
-         $this->load->helper('url');
-        //A CI controller ad egy LOAD mezőt, amivel a segédeket"""" betudom
+        $this->load->helper('url');
+        //A CI controller ad egy LOAD mezőt, amivel a segédeket betudom
         //tölteni funkcio szerint
         
         // Kell a cím

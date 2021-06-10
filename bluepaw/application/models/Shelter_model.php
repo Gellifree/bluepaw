@@ -30,7 +30,6 @@ class Shelter_model extends CI_Model{
         //FROM `shelter` 
         //WHERE aktiv = 1 
         //order by nev asc
-        
         $this->db->select('s.id, s.nev');
         $this->db->from('shelter s');
         $this->db->where('s.aktiv', 1);
@@ -58,7 +57,7 @@ class Shelter_model extends CI_Model{
     
     public function delete($id)
     {
-        //DELETE FROM shelter WHERE id = $id A ND aktiv = 1
+        //DELETE FROM shelter WHERE id = $id AND aktiv = 1
         $this->db->where('id', $id);
         $this->db->where('aktiv', 1);
         return $this->db->delete('shelter');
