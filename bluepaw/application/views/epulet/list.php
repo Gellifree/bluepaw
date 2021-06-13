@@ -1,5 +1,5 @@
 <h1> <?= $title ?> </h1>
-
+<?php echo anchor(base_url('epulet/insert'), 'Új rekort hozzáadása'); ?>
 <!-- A rekordlistát csak akkor ha nem üres -->
 
 <?php if($records == null || empty($records)): ?>

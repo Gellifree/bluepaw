@@ -15,9 +15,11 @@ class Telep extends CI_Controller{
     public function __construct() {
         parent::__construct();
         $this->load->model('telep_model');
+        //$this->load->helper('language');
+        $this->lang->load('telep');
     }
     
-    public function list($telep_id = NULL)
+    public function index($telep_id = NULL)
     {
         $this->load->helper('url');
         

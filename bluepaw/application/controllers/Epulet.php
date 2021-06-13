@@ -30,8 +30,43 @@ class Epulet extends CI_Controller {
     }
     
     public function insert()
-    {
+    {   
+        $this->load->library('form_validation');
         
+        
+        $this->form_validation->set_rules('megnevezes', 'Épület Megnevezése', 'required');
+        $this->form_validation->set_rules('tipus', 'Épület Típusa', 'required');
+        $this->form_validation->set_rules('telep', 'Hozzátartozó Telep', 'required');
+        
+        if($this->form_validation->run() == TRUE)
+        {
+            if( $this->e_model->insert(
+                    $this->input->post('telep'),
+                    $this->input->post('megnevezes'),
+                    $this->input->post('tipus')
+            ) )
+            {
+                redirect(base_url('epulet/list'));
+            }
+        }
+        else
+        {
+            $this->load->helper('form');
+            $this->load->model('telep_model');
+        
+            $list = $this->telep_model->get_list();
+            $telepek = [];
+            foreach($list as &$item)
+            {
+                $telepek[$item->id] = $item->nev;
+            }
+        
+            $view_params = [
+                'telepek' => $telepek
+            ];
+    
+            $this->load->view('epulet/insert', $view_params);
+        }
     }
     
     public function update()

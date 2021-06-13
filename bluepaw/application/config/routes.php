@@ -52,3 +52,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $route['default_controller'] = 'welcome';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
+
+$route['telep/list/(:num)'] = 'telep/index/$1';
+$route['telep/list'] = 'telep/index';
+$route['telepek_listaja'] = 'telep/index';

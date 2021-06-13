@@ -9,8 +9,8 @@
         <thead>
             <tr>
                 <th> Azonosító  </th>
-                <th> Név        </th>
-                <th> Műveletek  </th>
+                <th> <?php echo lang('telep_name'); ?>        </th>
+                <th>  <?php echo lang('operations'); ?>  </th>
             </tr>
         </thead>
         <tbody>
@@ -19,7 +19,7 @@
                 <td> <?=$record->id?> </td>
                 <td> <?=$record->nev?> </td>
                 <td>
-                    <?php echo anchor(base_url('telep/list/'.$record->id), 'Részletek'); ?>
+                    <?php echo anchor(base_url('telep/list/'.$record->id), lang('details')); ?>
                     <?php echo anchor(base_url('telep/delete/'.$record->id), 'Törlés'); ?>
                     <?php echo anchor(base_url('telep/update/'.$record->id), 'Szerkesztés'); ?>
                 </td>

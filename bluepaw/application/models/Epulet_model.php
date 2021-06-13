@@ -28,4 +28,16 @@ class Epulet_model extends CI_Model{
         
         return $this->db->get()->result();
     }
+    
+    public  function insert($telep, $megnevezes, $tipus,)
+    {
+        $record = [
+            'telep' => $telep,
+            'megnevezes' => $megnevezes,
+            'tipus' => $tipus
+        ];
+        
+        $this->db->insert('epulet', $record);
+        return $this->db->insert_id();
+    }
 }
