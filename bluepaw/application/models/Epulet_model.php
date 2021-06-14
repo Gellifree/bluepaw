@@ -29,6 +29,18 @@ class Epulet_model extends CI_Model{
         return $this->db->get()->result();
     }
     
+    public function get_one($id)
+    {
+        //SELECT * => mezőlista kifejtés
+        //FROM `telep` 
+        
+        $this->db->select('e.id, e.megnevezes, e.tipus');
+        $this->db->from('epulet e');
+        $this->db->where('id', $id);
+        
+        return $this->db->get()->row();
+    }
+    
     public  function insert($telep, $megnevezes, $tipus,)
     {
         $record = [

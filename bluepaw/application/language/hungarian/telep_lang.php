@@ -6,4 +6,8 @@
  * and open the template in the editor.
  */
 
-$lang['telep_name'] = 'Telep neve';
+$lang['site_name'] = 'Telep neve';
+$lang['site_description'] = 'Telep leírása';
+
+$lang['site_list'] = 'Telepek listája';
+$lang['site_show_details'] = 'Telephely részletes leírása';

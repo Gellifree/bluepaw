@@ -43,6 +43,7 @@ class Telep_model extends CI_Model{
         
         return $this->db->get()->row();
     }
+    
     public function delete($id)
     {
         //DELETE FROM shelter WHERE id = $id AND aktiv = 1

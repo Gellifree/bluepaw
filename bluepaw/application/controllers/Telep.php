@@ -14,9 +14,21 @@
 class Telep extends CI_Controller{
     public function __construct() {
         parent::__construct();
+        
+        //Telep controllerhez csak bejeltnkezett user férhet hozzé
+        //Ha valaki nincs bejeltkezve, akkor menjünk a kezdőoldalra
+        if(!$this->ion_auth->logged_in())
+        {
+            redirect(base_url('auth'));
+        }
+        
+        
+        
         $this->load->model('telep_model');
         //$this->load->helper('language');
         $this->lang->load('telep');
+        
+        
     }
     
     public function index($telep_id = NULL)
@@ -26,7 +38,7 @@ class Telep extends CI_Controller{
         if($telep_id == NULL)
         {
             $view_params = [
-                'title' => 'Telepek listája',
+                'title' => lang('site_list'),
                 'records' => $this->telep_model->get_list()
             ];
             
@@ -47,7 +59,7 @@ class Telep extends CI_Controller{
                 show_error('Az id-vel nem létezik aktív rekord');
             }
             $view_params = [
-                'title' => 'Részletes rekordatatok',
+                'title' => lang('site_show_details'),
                 'record' => $record
             ];
             
@@ -60,6 +72,12 @@ class Telep extends CI_Controller{
     
     public function insert()
     {    
+        //Adminok illetve telep menedzserek vihetnek fel új telepet
+        
+        if(!$this->ion_auth->in_group(['admin', 'site_manager'], false, false))
+        {
+            redirect(base_url());
+        }
         
         $this->load->library('form_validation'); //$this->form_validation mező jön létre
         
@@ -147,6 +165,12 @@ class Telep extends CI_Controller{
     
     public function delete($telep_id = NULL)
     {
+        if(!$this->ion_auth->is_admin())
+        {
+            redirect(base_url());
+        }
+        
+        
         $this->load->helper('url');
         
         if($telep_id == NULL)

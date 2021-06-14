@@ -175,3 +175,9 @@ Ezzel sikerült elkészítenünk az adatbázist, és pár példa adattal
 (a teljesség igénye nélkül), feltölteni, a weboldal tesztelése céljából,
 és a további munka folytatása szempontjából.
 ***/
+
+
+-- Az állat tábla létrehozásakor, kihagytuk az állathoz tartozó kép tárolásához szükséges mezőt.
+-- a következő parancsal fogjuk hozzáadni ezt:
+
+alter table allat add kep blob;

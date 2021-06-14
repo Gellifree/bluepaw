@@ -7,7 +7,7 @@
     (
         ['type' => 'text', 'name' => 'telep_nev', 'required' => 'required', 'minlength' => 2],
         set_value('telep_nev', $record->nev),
-        ['placeholder' => 'Telep neve']
+        ['placeholder' => lang('site_name')]
     ); 
 ?> <br/>
 
@@ -15,14 +15,14 @@
     (
         ['name'=> 'telep_leiras'],
         set_value('telep_leiras', $record->leiras),
-        ['placeholder' => 'Telep leírása']
+        ['placeholder' => lang('site_description')]
     );
 ?> <br/>
 
 <?php echo form_button
     (
         ['type' => 'submit', 'name' => 'mentes'],
-        'Mentés'
+        lang('save')
     ); 
 ?>
 

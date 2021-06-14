@@ -1,17 +1,17 @@
-<h1> <?= $title ?> </h1>
-<?php echo anchor(base_url('epulet/insert'), 'Új rekort hozzáadása'); ?>
+<h1> <?= $title ?>  </h1>
+<?php echo anchor(base_url('epulet/insert'), lang('add')); ?>
 <!-- A rekordlistát csak akkor ha nem üres -->
 
 <?php if($records == null || empty($records)): ?>
-<p> Nincs rögzítve eggyetlen Telep sem! </p>
+<p> <?php echo lang('notfound'); ?> </p>
 <?php else: ?>
     <table>
         <thead>
             <tr>
-                <th> Azonosító  </th>
-                <th> Megnevezés </th>
-                <th> Telep  </th>
-                <th> Műveletek  </th>
+                <th> <?php echo lang('identification'); ?> </th>
+                <th> <?php echo lang('building_name'); ?> </th>
+                <th> <?php echo lang('site_name'); ?>  </th>
+                <th> <?php echo lang('operations'); ?>  </th>
             </tr>
         </thead>
         <tbody>
@@ -21,14 +21,14 @@
                 <td> <?=$record->megnevezes?> </td>
                 <td> <?=$record->telep_nev?> </td>
                 <td>
-                    <?php echo anchor(base_url('epulet/list/'.$record->id), 'Részletek'); ?>
-                    <?php echo anchor(base_url('epulet/delete/'.$record->id), 'Törlés'); ?>
-                    <?php echo anchor(base_url('epulet/update/'.$record->id), 'Szerkesztés'); ?>
+                    <?php echo anchor(base_url('epulet/list/'.$record->id), lang('details')); ?>
+                    <?php echo anchor(base_url('epulet/delete/'.$record->id), lang('delete')); ?>
+                    <?php echo anchor(base_url('epulet/update/'.$record->id), lang('edit')); ?>
                 </td>
             </tr>
         <?php endforeach; ?>
         </tbody>
     </table>
 
-    <p>Lekérdezett rekordok: <?=count($records)?></p>
+<p><?php echo lang('number_of_records') ?><?=count($records)?></p>
 <?php endif; ?>
