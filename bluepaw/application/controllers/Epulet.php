@@ -17,7 +17,7 @@ class Epulet extends CI_Controller {
         
         $this->load->model('epulet_model', 'e_model');
         $this->lang->load('epulet');
-         $this->lang->load('telep');
+        $this->lang->load('telep');
     }
     
     /* public function list()

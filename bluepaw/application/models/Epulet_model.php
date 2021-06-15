@@ -20,33 +20,30 @@ class Epulet_model extends CI_Model{
     
     public function get_list()
     {
-        $this->db->select('e.id, e.megnevezes, t.nev telep_nev');
+        $this->db->select('e.id, e.nev, r.nev regio_nev');
         $this->db->from('epulet e');
-        $this->db->join('telep t', 't.id = e.telep', 'inner');
-        $this->db->order_by('t.nev', 'asc');
-        $this->db->order_by('e.megnevezes', 'asc');
+        $this->db->join('regio r', 'r.id = e.regio', 'inner');
+        $this->db->order_by('r.nev', 'asc');
+        $this->db->order_by('e.nev', 'asc');
         
         return $this->db->get()->result();
     }
     
     public function get_one($id)
     {
-        //SELECT * => mezőlista kifejtés
-        //FROM `telep` 
-        
-        $this->db->select('e.id, e.megnevezes, e.tipus');
+        $this->db->select('e.id, e.nev, e.tipus');
         $this->db->from('epulet e');
         $this->db->where('id', $id);
         
         return $this->db->get()->row();
     }
     
-    public  function insert($telep, $megnevezes, $tipus,)
+    public  function insert($regio, $nev, $leiras,)
     {
         $record = [
-            'telep' => $telep,
-            'megnevezes' => $megnevezes,
-            'tipus' => $tipus
+            'regio' => $regio,
+            'nev' => $nev,
+            'leiras' => $leiras
         ];
         
         $this->db->insert('epulet', $record);

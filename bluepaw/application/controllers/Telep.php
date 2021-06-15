@@ -21,14 +21,8 @@ class Telep extends CI_Controller{
         {
             redirect(base_url('auth'));
         }
-        
-       
-        
         $this->load->model('telep_model');
-        //$this->load->helper('language');
-        $this->lang->load('telep');
-        
-        
+        $this->lang->load('telep');  
     }
     
     public function index($telep_id = NULL)
@@ -84,10 +78,7 @@ class Telep extends CI_Controller{
         //Adminok illetve telep menedzserek vihetnek fel új telepet
         
         if(!$this->ion_auth->in_group(['admin', 'site_manager'], false, false))
-        {
-            
-            
-            
+        {  
             redirect(base_url());
         }
         
