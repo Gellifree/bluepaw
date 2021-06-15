@@ -1,14 +1,4 @@
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-/**
- * Author:  Norbert
- * Created: 2021. jún. 1.
- */
-
-
+/* Első adatbázis próbálkozás, később elvetésre került!
 
 -- Teszt adatok
 -- Shelter tábla létrehozása tesztelési célzattal 
@@ -170,14 +160,91 @@ create table allat
 insert into allat (nev, nem, tipus, szoba) values ('Csöpi', 'Fiú', 'Kutya', 2);
 insert into allat (nev, nem, tipus, szoba) values ('Lucky', 'Lány', 'Kutya', 2);
 
-/***
 Ezzel sikerült elkészítenünk az adatbázist, és pár példa adattal
 (a teljesség igénye nélkül), feltölteni, a weboldal tesztelése céljából,
 és a további munka folytatása szempontjából.
-***/
+
 
 
 -- Az állat tábla létrehozásakor, kihagytuk az állathoz tartozó kép tárolásához szükséges mezőt.
 -- a következő parancsal fogjuk hozzáadni ezt:
 
-alter table allat add kep blob;
+*/
+
+
+
+/* Módosított adatbázis tábláinak létrehozása */
+-- =================================== ---
+
+
+-- Régió tábla létrehozása
+create table regio(
+    id int primary key auto_increment,
+    nev varchar(50) not null,
+    leiras text
+);
+
+-- Épület tábla
+create table epulet(
+    id int primary key auto_increment,
+    nev varchar(50) not null,
+    leiras text,
+    regio int,
+    foreign key (regio) references regio(id)
+);
+
+-- Iroda
+create table iroda(
+    id int primary key auto_increment,
+    nev varchar(50) not null,
+    kapacitas int not null,
+    epulet int,
+    foreign key (epulet) references epulet(id)
+);
+
+-- Kutya
+create table kutya(
+    id int primary key auto_increment,
+    nev varchar(50) not null,
+    leiras text,
+    nem tinyint,
+    szul_ev date,
+    kep_eleres varchar(1024),
+    epulet int,
+    foreign key (epulet) references epulet(id)
+);
+
+-- Munkakör
+create table munkakor(
+    id int primary key auto_increment,
+    nev varchar(50) not null,
+    leiras text,
+    fizetes int
+);
+
+-- Alkalmazott
+create table alkalmazott(
+    id int primary key auto_increment,
+    nev varchar(50) not null,
+    iroda int,
+    munkakor int,
+    foreign key (iroda) references iroda(id),
+    foreign key (munkakor) references munkakor(id)
+);
+
+-- Feladatkor
+create table feladatkor(
+    id int primary key auto_increment,
+    nev varchar(50) not null,
+    leiras text
+);
+
+-- Rendelkezik kapcsolótábla
+create table rendelkezik(
+    feladatkor int,
+    munkakor int,
+    foreign key (feladatkor) references feladatkor(id),
+    foreign key (munkakor) references munkakor(id)
+);
+
+-- Később adatokat felviszünk

@@ -1,5 +1,12 @@
 <h1> <?= $title ?> </h1>
 
+<?php if(!empty($errors)): ?>
+
+    <?php foreach($errors as $error): ?>
+        <p><?=$error?></p>
+    <?php endforeach; ?>
+<?php endif?>
+
 <!-- A rekordlistát csak akkor ha nem üres -->
 <?php echo anchor(base_url('telep/insert'), lang('add')); ?>
 <?php if($records == null || empty($records)): ?>

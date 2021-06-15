@@ -22,7 +22,7 @@ class Telep extends CI_Controller{
             redirect(base_url('auth'));
         }
         
-        
+       
         
         $this->load->model('telep_model');
         //$this->load->helper('language');
@@ -37,9 +37,17 @@ class Telep extends CI_Controller{
         
         if($telep_id == NULL)
         {
+            $errors = [];
+            if($this->session->has_userdata('errors'))
+            {
+                $errors = $this->session->userdata('errors');
+                $this->session->unset_userdata('errors');
+            }
+            
             $view_params = [
                 'title' => lang('site_list'),
-                'records' => $this->telep_model->get_list()
+                'records' => $this->telep_model->get_list(),
+                'errors' => $errors
             ];
             
             $this->load->view('telep/list', $view_params);
@@ -49,6 +57,7 @@ class Telep extends CI_Controller{
             if(!is_numeric($telep_id))
             {
                 show_error('Nem helyes paraméterérték!');
+                redirect(base_url());
             }
             
             //lekérdezem a rekordot
@@ -76,6 +85,9 @@ class Telep extends CI_Controller{
         
         if(!$this->ion_auth->in_group(['admin', 'site_manager'], false, false))
         {
+            
+            
+            
             redirect(base_url());
         }
         
@@ -167,6 +179,12 @@ class Telep extends CI_Controller{
     {
         if(!$this->ion_auth->is_admin())
         {
+            
+            $errors = [
+                'Nincs jogosultságod telepek törléséhez! Csak Admin jogú felhasználó teheti meg.'
+            ];
+            
+            $this->session->set_userdata(['errors' => $errors]);
             redirect(base_url());
         }
         
