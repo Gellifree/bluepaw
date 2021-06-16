@@ -1,3 +1,5 @@
+<?php $this->load->view('common/bootstrap'); ?>
+
 <h1><?php echo lang('deactivate_heading');?></h1>
 <p><?php echo sprintf(lang('deactivate_subheading'), $user->{$identity}); ?></p>
 

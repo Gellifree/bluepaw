@@ -1,3 +1,5 @@
+<?php $this->load->view('common/bootstrap'); ?>
+
 <h1> <?= $title ?> </h1>
 
 <?php if(!empty($errors)): ?>

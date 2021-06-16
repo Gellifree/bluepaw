@@ -1,3 +1,5 @@
+<?php $this->load->view('common/bootstrap'); ?>
+
 <?php echo form_open(); ?>
 
 <?php echo form_input(['type' => 'text', 'name' => 'nev'], set_value('nev', ''), ['placeholder' => 'Iroda neve']); ?>

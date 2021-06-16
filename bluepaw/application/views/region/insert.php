@@ -1,4 +1,13 @@
+<?php $this->load->view('common/bootstrap'); ?>
+
+<?php $this->load->view('common/bootstrap'); ?>
+
+
+
+
+
 <?php echo validation_errors(); ?>
+
 
 <?php echo form_open(); ?>
 

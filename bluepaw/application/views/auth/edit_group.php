@@ -1,3 +1,5 @@
+<?php $this->load->view('common/bootstrap'); ?>
+
 <h1><?php echo lang('edit_group_heading');?></h1>
 <p><?php echo lang('edit_group_subheading');?></p>
 

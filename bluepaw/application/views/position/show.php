@@ -1,3 +1,5 @@
+<?php $this->load->view('common/bootstrap'); ?>
+
 <h3><?=$title ?></h3>
 <h4> <?php echo lang('identification'); ?> </h4>
 <p><?=$record->id?></p>
