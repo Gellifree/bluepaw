@@ -25,7 +25,6 @@ class Region extends CI_Controller{
     }
     
     public function list($region_id = NULL) {
-        $this->load->helper('url');
         if($region_id == NULL)
         {
             $errors = [];

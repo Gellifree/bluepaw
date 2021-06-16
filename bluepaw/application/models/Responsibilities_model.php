@@ -28,7 +28,11 @@ class Responsibilities_model extends CI_Model{
     
     public function get_one($id)
     {
+        $this->db->select('*');
+        $this->db->from('feladatkor');
+        $this->db->where('feladatkor.id', $id);
         
+        return $this->db->get()->row();
     }
     
     public function delete($id)

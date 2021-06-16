@@ -29,7 +29,11 @@ class Building_model extends CI_Model {
     
     public function get_one($id)
     {
+        $this->db->select('*');
+        $this->db->from('epulet');
+        $this->db->where('epulet.id', $id);
         
+        return $this->db->get()->row();
     }
     
     public function delete($id)

@@ -42,7 +42,25 @@ class Employee extends CI_Controller {
         }
         else
         {
-            //Kapott paramétert, egyedileg nézünk
+            if(!is_numeric($employee_id))
+            {
+                show_error('Nem helyes paraméterérték');
+                redirect(base_url());
+            }
+            
+            $record = $this->employee_model->get_one($employee_id);
+            
+            if(empty($record))
+            {
+                show_error('Ezzel az ID-vel nincs elem.');
+            }
+            
+            $view_params = [
+                'title' => 'Részletes oldal címe',
+                'record' => $record
+            ];
+            
+            $this->load->view('employee/show', $view_params);
         }
     }
     

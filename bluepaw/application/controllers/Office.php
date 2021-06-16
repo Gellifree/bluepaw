@@ -42,7 +42,25 @@ class Office extends CI_Controller{
         }
         else
         {
-            //Kapott paramétert, egyedileg nézünk
+            if(!is_numeric($office_id))
+            {
+                show_error('Nem helyes paraméterérték');
+                redirect(base_url());
+            }
+            
+            $record = $this->office_model->get_one($office_id);
+            
+            if(empty($record))
+            {
+                show_error('Ezzel az ID-vel nincs elem.');
+            }
+            
+            $view_params = [
+                'title' => 'Részletes oldal címe',
+                'record' => $record
+            ];
+            
+            $this->load->view('office/show', $view_params);
         }
     }
     

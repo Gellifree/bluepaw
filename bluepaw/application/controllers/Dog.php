@@ -42,7 +42,25 @@ class Dog extends CI_Controller{
         }
         else
         {
-            //Kapott paramétert, egyedileg nézünk
+            if(!is_numeric($dog_id))
+            {
+                show_error('Nem helyes paraméterérték');
+                redirect(base_url());
+            }
+            
+            $record = $this->dog_model->get_one($dog_id);
+            
+            if(empty($record))
+            {
+                show_error('Ezzel az ID-vel nincs elem.');
+            }
+            
+            $view_params = [
+                'title' => 'Részletes oldal címe',
+                'record' => $record
+            ];
+            
+            $this->load->view('dog/show', $view_params);
         }
     }
     
