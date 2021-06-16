@@ -28,9 +28,9 @@
                 <td> <?=$record->nev?> </td>
                 <td> <?=$record->regio_nev?> </td>
                 <td>
-                    <?php echo anchor(base_url('telep/list/'.$record->id), lang('details')); ?>
-                    <?php echo anchor(base_url('telep/delete/'.$record->id), lang('delete')); ?>
-                    <?php echo anchor(base_url('telep/update/'.$record->id), lang('edit')); ?>
+                    <?php echo anchor(base_url('building/list/'.$record->id), lang('details')); ?>
+                    <?php echo anchor(base_url('building/delete/'.$record->id), lang('delete')); ?>
+                    <?php echo anchor(base_url('building/update/'.$record->id), lang('edit')); ?>
                 </td>
             </tr>
         <?php endforeach; ?>

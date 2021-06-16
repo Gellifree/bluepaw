@@ -8,7 +8,7 @@
 <?php endif?>
 
 <!-- A rekordlistát csak akkor ha nem üres -->
-<?php echo anchor(base_url('building/insert'), lang('add')); ?>
+<?php echo anchor(base_url('employee/insert'), lang('add')); ?>
 <?php if($records == null || empty($records)): ?>
 <p> <?php echo lang('notfound') ?> </p>
 <?php else: ?>
@@ -30,9 +30,9 @@
                 <td> <?=$record->iroda_nev?> </td>
                 <td> <?=$record->munkakor_nev?> </td>
                 <td>
-                    <?php echo anchor(base_url('telep/list/'.$record->id), lang('details')); ?>
-                    <?php echo anchor(base_url('telep/delete/'.$record->id), lang('delete')); ?>
-                    <?php echo anchor(base_url('telep/update/'.$record->id), lang('edit')); ?>
+                    <?php echo anchor(base_url('employee/list/'.$record->id), lang('details')); ?>
+                    <?php echo anchor(base_url('employee/delete/'.$record->id), lang('delete')); ?>
+                    <?php echo anchor(base_url('employee/update/'.$record->id), lang('edit')); ?>
                 </td>
             </tr>
         <?php endforeach; ?>

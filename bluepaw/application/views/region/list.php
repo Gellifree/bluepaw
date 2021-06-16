@@ -19,9 +19,9 @@
                 <td> <?=$record->id?> </td>
                 <td> <?=$record->nev?> </td>
                 <td>
-                    <?php echo anchor(base_url('epulet/list/'.$record->id), lang('details')); ?>
-                    <?php echo anchor(base_url('epulet/delete/'.$record->id), lang('delete')); ?>
-                    <?php echo anchor(base_url('epulet/update/'.$record->id), lang('edit')); ?>
+                    <?php echo anchor(base_url('region/list/'.$record->id), lang('details')); ?>
+                    <?php echo anchor(base_url('region/delete/'.$record->id), lang('delete')); ?>
+                    <?php echo anchor(base_url('region/update/'.$record->id), lang('edit')); ?>
                 </td>
             </tr>
         <?php endforeach; ?>

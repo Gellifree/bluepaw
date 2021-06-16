@@ -8,7 +8,7 @@
 <?php endif?>
 
 <!-- A rekordlistát csak akkor ha nem üres -->
-<?php echo anchor(base_url('building/insert'), lang('add')); ?>
+<?php echo anchor(base_url('dog/insert'), lang('add')); ?>
 <?php if($records == null || empty($records)): ?>
 <p> <?php echo lang('notfound') ?> </p>
 <?php else: ?>
@@ -28,9 +28,9 @@
                 <td> <?=$record->nev?> </td>
                 <td> <?=$record->epulet_nev?> </td>
                 <td>
-                    <?php echo anchor(base_url('telep/list/'.$record->id), lang('details')); ?>
-                    <?php echo anchor(base_url('telep/delete/'.$record->id), lang('delete')); ?>
-                    <?php echo anchor(base_url('telep/update/'.$record->id), lang('edit')); ?>
+                    <?php echo anchor(base_url('dog/list/'.$record->id), lang('details')); ?>
+                    <?php echo anchor(base_url('dog/delete/'.$record->id), lang('delete')); ?>
+                    <?php echo anchor(base_url('dog/update/'.$record->id), lang('edit')); ?>
                 </td>
             </tr>
         <?php endforeach; ?>
