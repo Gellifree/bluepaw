@@ -27,7 +27,7 @@ class Telep extends CI_Controller{
     
     public function index($telep_id = NULL)
     {
-        $this->load->helper('url');
+        //$this->load->helper('url');
         
         if($telep_id == NULL)
         {
@@ -116,7 +116,7 @@ class Telep extends CI_Controller{
     
     public function update($telep_id = NULL)
     {
-        $this->load->helper('url');
+        //$this->load->helper('url');
         if($telep_id == NULL)
         {
             redirect(base_url('telep/list'));
@@ -180,7 +180,7 @@ class Telep extends CI_Controller{
         }
         
         
-        $this->load->helper('url');
+        //$this->load->helper('url');
         
         if($telep_id == NULL)
         {
@@ -201,7 +201,9 @@ class Telep extends CI_Controller{
         if($this->telep_model->delete($telep_id))
         {
             redirect(base_url('telep/list'));
-         } else{
+        }
+        else
+        {
             show_error('A törlés sikertelen');
         }
     }

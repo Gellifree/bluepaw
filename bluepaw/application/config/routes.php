@@ -49,9 +49,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | Examples:	my-controller/index	-> my_controller/index
 |		my-controller/my-method	-> my_controller/my_method
 */
-$route['default_controller'] = 'telep';
+$route['default_controller'] = 'region/list';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
+
+
 
 $route['telep/list/(:num)'] = 'telep/index/$1';
 $route['telep/list'] = 'telep/index';

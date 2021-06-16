@@ -247,4 +247,42 @@ create table rendelkezik(
     foreign key (munkakor) references munkakor(id)
 );
 
--- Később adatokat felviszünk
+
+-- Példa adatok, a lista nézet ellenőrzéséhez (Később törlésre kerülnek)
+
+-- Régió hozzáadása
+insert into regio(nev) values ('Teszt régió');
+insert into regio(nev, leiras) values ('Teszt 2 régió', 'Példa leírás.');
+
+
+-- Épület hozzáadása
+insert into epulet(nev, regio) values ('1-es épület', 1);
+insert into epulet(nev, leiras, regio) values ('2-es épület', 'Ebben Irodák vannak.' ,1);
+
+
+-- Iroda hozzáadása
+insert into iroda(nev, kapacitas, epulet) values ('1-es iroda', 20, 3);
+insert into iroda(nev, kapacitas, epulet) values ('2-es iroda', 23, 3);
+insert into iroda(nev, kapacitas, epulet) values ('1-es iroda', 12, 4);
+
+-- Kutya
+insert into kutya(nev, leiras, nem, epulet) values ('Csöpi', 'Csöpi egy kutya', 0, 3);
+insert into kutya(nev, leiras, nem, epulet) values ('Röfi', 'Röfi is egy kutya', 0, 3);
+
+-- Munkakör
+insert into munkakor(nev, leiras, fizetes) values ('Takarító', 'A takaríó munkatársnak takaríania kell', 80000);
+insert into munkakor(nev, leiras, fizetes) values ('Régió vezető', 'A régió vezetőjének vezetnie kell a régiót.', 180000);
+
+-- Feladatkör
+insert into feladatkor(nev, leiras) values ('Takarítás', 'Álltalános takarítási feladatok');
+insert into feladatkor(nev, leiras) values ('Ügyfélszolgálat', 'Ügyfelekkel történő kommunikáció');
+insert into feladatkor(nev, leiras) values ('Adminisztráció', 'Adminisztratív feladatok végzése');
+
+-- Alkalmazott
+insert into alkalmazott(nev, iroda, munkakor) values ('Példa Péter', 1, 1);
+insert into alkalmazott(nev, iroda, munkakor) values ('Git Áron', 1, 2);
+
+-- Rendelkezik
+insert into rendelkezik(feladatkor, munkakor) values (1, 1);
+insert into rendelkezik(feladatkor, munkakor) values (3, 2);
+insert into rendelkezik(feladatkor, munkakor) values (2, 2);
