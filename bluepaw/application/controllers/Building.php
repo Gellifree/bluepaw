@@ -21,6 +21,7 @@ class Building  extends CI_Controller{
         }
         
         $this->load->model('building_model');
+        $this->load->model('region_model');
         //$this->lang->load('building');
     }
     
@@ -65,7 +66,41 @@ class Building  extends CI_Controller{
     }
     
     public function insert() {
-        echo 'insert';
+        if(!$this->ion_auth->in_group(['admin', 'building_manager'], false, false))
+        {
+            redirect(base_url());
+        }
+        
+        $this->load->library('form_validation');
+        
+        $this->form_validation->set_rules('nev', 'Épület Megnevezése', 'required|min_length[3]');
+        $this->form_validation->set_rules('regio', 'Hozzátartozó Régió', 'required');
+        
+        if($this->form_validation->run() == TRUE)
+        {
+            if( $this->building_model->insert( $this->input->post('nev'), $this->input->post('leiras'), $this->input->post('regio')) )
+            {
+                redirect(base_url('building/list'));
+            }
+        }
+        else
+        {
+            $this->load->helper('form');
+            $this->load->model('building_model');
+        
+            $list = $this->region_model->get_list();
+            $regions = [];
+            foreach($list as &$item)
+            {
+                $regions[$item->id] = $item->nev;
+            }
+        
+            $view_params = [
+                'regiok' => $regions
+            ];
+    
+            $this->load->view('building/insert', $view_params);
+        }
     }
     
     public function update($building_id = NULL) {

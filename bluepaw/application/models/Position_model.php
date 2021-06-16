@@ -19,10 +19,11 @@ class Position_model extends CI_Model{
     
     public function get_list()
     {
-        $this->db->select('m.id, m.nev, m.fizetes, f.nev rendelkezik_feladatkor');
+        //$this->db->select('m.id, m.nev, m.fizetes, f.nev rendelkezik_feladatkor');
+        $this->db->select('m.id, m.nev, m.fizetes');
         $this->db->from('munkakor m');
-        $this->db->join('rendelkezik r', 'm.id = r.munkakor', 'inner');
-        $this->db->join('feladatkor f', 'f.id = r.feladatkor', 'inner');
+        //$this->db->join('rendelkezik r', 'm.id = r.munkakor', 'inner');
+        //$this->db->join('feladatkor f', 'f.id = r.feladatkor', 'inner');
         $this->db->order_by('m.nev', 'asc');
         
         return $this->db->get()->result();
@@ -48,8 +49,15 @@ class Position_model extends CI_Model{
     }
     
     //Paraméterek később
-    public function insert()
+    public function insert($nev, $leiras, $fizetes)
     {
+        $record = [
+            'nev' => $nev,
+            'leiras' => $leiras,
+            'fizetes' => $fizetes
+        ];
         
+        $this->db->insert('munkakor', $record);
+        return $this->db->insert_id();
     }
 }

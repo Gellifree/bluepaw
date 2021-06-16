@@ -47,8 +47,18 @@ class Dog_model  extends CI_Model{
     }
     
     //Paraméterek később
-    public function insert()
+    public function insert($nev, $leiras, $nem, $szul_datum, $kep_eleres, $epulet)
     {
+        $record = [
+            'nev' => $nev,
+            'leiras' => $leiras,
+            'nem' => $nem,
+            'szul_ev' => $szul_datum,
+            'kep_eleres' => $kep_eleres,
+            'epulet' => $epulet 
+        ];
         
+        $this->db->insert('kutya', $record);
+        return $this->db->insert_id();
     }
 }

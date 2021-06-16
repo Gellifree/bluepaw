@@ -46,8 +46,14 @@ class Responsibilities_model extends CI_Model{
     }
     
     //Paraméterek később
-    public function insert()
+    public function insert($nev, $leiras)
     {
+        $record = [
+            'nev' => $nev,
+            'leiras' => $leiras
+        ];
         
+        $this->db->insert('feladatkor', $record);
+        return $this->db->insert_id();
     }
 }

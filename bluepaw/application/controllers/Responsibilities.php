@@ -65,7 +65,27 @@ class Responsibilities extends CI_Controller{
     }
     
     public function insert() {
-        echo 'insert';
+        if(!$this->ion_auth->in_group(['admin', 'responsibility_manager'], false, false))
+        {
+            redirect(base_url());
+        }
+        
+        $this->load->library('form_validation');
+        
+        $this->form_validation->set_rules('nev', 'Feladatkör Megnevezése', 'required|min_length[3]');
+        
+        if($this->form_validation->run() == TRUE)
+        {
+            if( $this->responsibilities_model->insert( $this->input->post('nev'), $this->input->post('leiras')) )
+            {
+                redirect(base_url('responsibilities/list'));
+            }
+        }
+        else
+        {
+            $this->load->helper('form');
+            $this->load->view('responsibilities/insert');
+        }
     }
     
     public function update($resp_id = NULL) {

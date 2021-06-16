@@ -47,8 +47,15 @@ class Office_model extends CI_Model {
     }
     
     //Paraméterek később
-    public function insert()
+    public function insert($nev, $kapacitas, $epulet)
     {
+        $record = [
+            'nev' => $nev,
+            'kapacitas' => $kapacitas,
+            'epulet' => $epulet
+        ];
         
+        $this->db->insert('iroda', $record);
+        return $this->db->insert_id();
     }
 }

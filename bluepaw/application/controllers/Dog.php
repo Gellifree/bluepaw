@@ -21,6 +21,7 @@ class Dog extends CI_Controller{
         }
         
         $this->load->model('dog_model');
+         $this->load->model('building_model');
         //$this->lang->load('dog'); 
     }
     
@@ -65,7 +66,41 @@ class Dog extends CI_Controller{
     }
     
     public function insert() {
-        echo 'insert';
+        if(!$this->ion_auth->in_group(['admin', 'dog_manager'], false, false))
+        {
+            redirect(base_url());
+        }
+        
+        $this->load->library('form_validation');
+        
+        $this->form_validation->set_rules('nev', 'Állat neve', 'required|min_length[3]');
+        $this->form_validation->set_rules('epulet', 'Hozzátartozó Épület', 'required');
+        
+        if($this->form_validation->run() == TRUE)
+        {
+            if( $this->dog_model->insert( $this->input->post('nev'), $this->input->post('leiras'),$this->input->post('nem'),$this->input->post('szul_datum'), $this->input->post('kep_eleres'), $this->input->post('epulet')  ) )
+            {
+                redirect(base_url('dog/list'));
+            }
+        }
+        else
+        {
+            $this->load->helper('form');
+            $this->load->model('building_model');
+        
+            $list = $this->building_model->get_list();
+            $buildings = [];
+            foreach($list as &$item)
+            {
+                $buildings[$item->id] = $item->nev;
+            }
+        
+            $view_params = [
+                'buildings' => $buildings
+            ];
+    
+            $this->load->view('dog/insert', $view_params);
+        }
     }
     
     public function update($dog_id = NULL) {

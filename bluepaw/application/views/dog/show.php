@@ -7,7 +7,7 @@
 <p><?=($record->leiras == NULL ? lang('no_description_found') : $record->leiras)?></p>
 
 <h4> <?php echo 'Nem'; ?> </h4>
-<p><?=($record->nem == NULL ? 'A Kutya neme ismeretlen' : ($record->nem == 0 ? 'Fiú' : 'Lány'))?></p>
+<p><?=($record->nem == NULL ? 'A Kutya neme ismeretlen' : $record->nem)?></p>
 
 <h4> <?php echo 'Születési év'; ?> </h4>
 <p><?=($record->szul_ev == NULL ? 'Születési év ismeretlen' : $record->szul_ev)?></p>

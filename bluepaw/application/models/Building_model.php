@@ -47,8 +47,15 @@ class Building_model extends CI_Model {
     }
     
     //Paraméterek később
-    public function insert()
+    public function insert($nev, $leiras, $regio)
     {
+        $record = [
+            'nev' => $nev,
+            'leiras' => $leiras,
+            'regio' => $regio
+        ];
         
+        $this->db->insert('epulet', $record);
+        return $this->db->insert_id();
     }
 }

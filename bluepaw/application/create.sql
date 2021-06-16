@@ -174,8 +174,6 @@ Ezzel sikerült elkészítenünk az adatbázist, és pár példa adattal
 
 
 /* Módosított adatbázis tábláinak létrehozása */
--- =================================== ---
-
 
 -- Régió tábla létrehozása
 create table regio(
@@ -267,7 +265,7 @@ insert into iroda(nev, kapacitas, epulet) values ('1-es iroda', 12, 4);
 
 -- Kutya
 insert into kutya(nev, leiras, nem, epulet) values ('Csöpi', 'Csöpi egy kutya', 0, 3);
-insert into kutya(nev, leiras, nem, epulet) values ('Röfi', 'Röfi is egy kutya', 0, 3);
+insert into kutya(nev, leiras, nem, epulet) values ('Röfi', 'Röfi is egy kutya', 1, 3);
 
 -- Munkakör
 insert into munkakor(nev, leiras, fizetes) values ('Takarító', 'A takaríó munkatársnak takaríania kell', 80000);
@@ -286,3 +284,12 @@ insert into alkalmazott(nev, iroda, munkakor) values ('Git Áron', 1, 2);
 insert into rendelkezik(feladatkor, munkakor) values (1, 1);
 insert into rendelkezik(feladatkor, munkakor) values (3, 2);
 insert into rendelkezik(feladatkor, munkakor) values (2, 2);
+
+
+-- Kutya táblában a nem módosítása szöveg típussá
+alter table kutya modify nem varchar(20);
+
+--Törlés, majd újrafelvétel
+delete from kutya where nem='0' or nem='1';
+insert into kutya(nev, leiras, nem, epulet) values ('Csöpi', 'Csöpi egy kutya', 'Fiú', 3);
+insert into kutya(nev, leiras, nem, epulet) values ('Röfi', 'Röfi is egy kutya', 'Lány', 3);

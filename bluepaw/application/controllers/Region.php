@@ -68,8 +68,36 @@ class Region extends CI_Controller{
         }
     }
     
-    public function insert() {
-        echo 'insert';
+    public function insert()
+    {
+        if(!$this->ion_auth->in_group(['admin', 'region_manager'], false, false))
+        {
+            redirect(base_url());
+        }
+        
+        $this->load->library('form_validation');
+        $this->form_validation->set_rules('region_nev', 'Régió neve', 'required|min_length[3]');
+        
+        if($this->form_validation->run() == TRUE)
+        {
+            $nev = $this->input->post('region_nev');
+            $leiras = !empty($this->input->post('region_leiras')) ? $this->input->post('region_leiras') : NULL;
+            
+            $id = $this->region_model->insert($nev, $leiras);
+            if($id)
+            {
+                redirect(base_url('region/list/'.$id));
+            }
+            else
+            {
+                show_error('Hiba a beszúrás közben');
+            }
+        }
+        else
+        {
+            $this->load->helper('form');
+            $this->load->view('region/insert');
+        }
     }
     
     public function update($region_id = NULL) {

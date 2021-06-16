@@ -48,8 +48,15 @@ class Employee_model extends CI_Model {
     }
     
     //Paraméterek később
-    public function insert()
+    public function insert($nev, $iroda, $munkakor)
     {
+        $record = [
+            'nev' => $nev,
+            'iroda' => $iroda,
+            'munkakor' => $munkakor
+        ];
         
+        $this->db->insert('alkalmazott', $record);
+        return $this->db->insert_id();
     }
 }

@@ -65,7 +65,28 @@ class Position extends CI_Controller{
     }
     
     public function insert() {
-        echo 'insert';
+        if(!$this->ion_auth->in_group(['admin', 'position_manager'], false, false))
+        {
+            redirect(base_url());
+        }
+        
+        $this->load->library('form_validation');
+        
+        $this->form_validation->set_rules('nev', 'Iroda Megnevezése', 'required|min_length[3]');
+        $this->form_validation->set_rules('fizetes', 'Épület', 'required');
+        
+        if($this->form_validation->run() == TRUE)
+        {
+            if( $this->position_model->insert( $this->input->post('nev'), $this->input->post('leiras'), $this->input->post('fizetes')) )
+            {
+                redirect(base_url('position/list'));
+            }
+        }
+        else
+        {
+            $this->load->helper('form');
+            $this->load->view('position/insert');
+        }
     }
     
     public function update($position_id = NULL) {

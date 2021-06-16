@@ -21,6 +21,7 @@ class Office extends CI_Controller{
         }
         
         $this->load->model('office_model');
+        $this->load->model('building_model');
         //$this->lang->load('office'); 
     }
     
@@ -65,7 +66,42 @@ class Office extends CI_Controller{
     }
     
     public function insert() {
-        echo 'insert';
+        if(!$this->ion_auth->in_group(['admin', 'office_manager'], false, false))
+        {
+            redirect(base_url());
+        }
+        
+        $this->load->library('form_validation');
+        
+        $this->form_validation->set_rules('nev', 'Iroda Megnevezése', 'required|min_length[3]');
+        $this->form_validation->set_rules('kapacitas', 'Kapacitás', 'required');
+        $this->form_validation->set_rules('epulet', 'Épület', 'required');
+        
+        if($this->form_validation->run() == TRUE)
+        {
+            if( $this->office_model->insert( $this->input->post('nev'), $this->input->post('kapacitas'), $this->input->post('epulet')) )
+            {
+                redirect(base_url('office/list'));
+            }
+        }
+        else
+        {
+            $this->load->helper('form');
+
+        
+            $list = $this->building_model->get_list();
+            $buildings = [];
+            foreach($list as &$item)
+            {
+                $buildings[$item->id] = $item->nev;
+            }
+        
+            $view_params = [
+                'epulet' => $buildings,
+            ];
+    
+            $this->load->view('office/insert', $view_params);
+        }
     }
     
     public function update($office_id = NULL) {

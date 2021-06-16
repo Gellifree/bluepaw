@@ -21,6 +21,8 @@ class Employee extends CI_Controller {
         }
         
         $this->load->model('employee_model');
+        $this->load->model('office_model');
+        $this->load->model('position_model');
         //$this->lang->load('employee'); 
     }
     
@@ -65,7 +67,50 @@ class Employee extends CI_Controller {
     }
     
     public function insert() {
-        echo 'insert';
+        if(!$this->ion_auth->in_group(['admin', 'employee_manager'], false, false))
+        {
+            redirect(base_url());
+        }
+        
+        $this->load->library('form_validation');
+        
+        $this->form_validation->set_rules('nev', 'Alkalmazott Megnevezése', 'required|min_length[3]');
+        $this->form_validation->set_rules('iroda', 'Iroda', 'required');
+        $this->form_validation->set_rules('munkakor', 'Munkakör', 'required');
+        
+        if($this->form_validation->run() == TRUE)
+        {
+            if( $this->employee_model->insert( $this->input->post('nev'), $this->input->post('iroda'), $this->input->post('munkakor')) )
+            {
+                redirect(base_url('employee/list'));
+            }
+        }
+        else
+        {
+            $this->load->helper('form');
+
+        
+            $list = $this->office_model->get_list();
+            $offices = [];
+            foreach($list as &$item)
+            {
+                $offices[$item->id] = $item->nev;
+            }
+            
+            $list = $this->position_model->get_list();
+            $positions = [];
+            foreach($list as &$item)
+            {
+                $positions[$item->id] = $item->nev;
+            }
+        
+            $view_params = [
+                'offices' => $offices,
+                'positions' => $positions
+            ];
+    
+            $this->load->view('employee/insert', $view_params);
+        }
     }
     
     public function update($employee_id = NULL) {

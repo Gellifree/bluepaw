@@ -47,6 +47,12 @@ class Region_model extends CI_Model{
     
     public function insert($nev, $leiras)
     {
+        $record = [
+            'nev' => $nev,
+            'leiras' => $leiras
+        ];
         
+        $this->db->insert('regio', $record);
+        return $this->db->insert_id();
     }
 }
