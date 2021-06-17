@@ -24,3 +24,7 @@ $lang['back_to_list'] = 'Back to full list view';
 
 $lang['id_error'] = 'There is no item with this ID';
 $lang['param_error'] = 'Parameter is not valid';
+
+$lang['permission_error_insert'] = 'You dont have permission to add to this list.';
+$lang['permission_error_modify'] = 'You dont have permission to modify in this list.';
+$lang['permission_error_delete'] = 'You dont have permission to delete from this list.';

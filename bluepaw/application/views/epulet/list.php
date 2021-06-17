@@ -2,6 +2,12 @@
 <?php echo anchor(base_url('epulet/insert'), lang('add')); ?>
 <!-- A rekordlistát csak akkor ha nem üres -->
 
+<?php if(!empty($errors)): ?>
+    <?php foreach($errors as $error): ?>
+        <p><?=$error?></p>
+    <?php endforeach; ?>
+<?php endif?>
+
 <?php if($records == null || empty($records)): ?>
 <p> <?php echo lang('notfound'); ?> </p>
 <?php else: ?>

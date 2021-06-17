@@ -3,7 +3,6 @@
 <h1> <?= $title ?> </h1>
 
 <?php if(!empty($errors)): ?>
-
     <?php foreach($errors as $error): ?>
         <p><?=$error?></p>
     <?php endforeach; ?>
@@ -12,6 +11,7 @@
 <!-- A rekordlistát csak akkor ha nem üres -->
 <?php echo anchor(base_url('responsibilities/insert'), lang('add')); ?>
 <?php if($records == null || empty($records)): ?>
+
 <p> <?php echo lang('notfound') ?> </p>
 <?php else: ?>
     <table>

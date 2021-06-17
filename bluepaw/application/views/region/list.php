@@ -1,6 +1,12 @@
 <?php $this->load->view('common/bootstrap'); ?>
 
 <h1> <?= $title ?>  </h1>
+<?php if(!empty($errors)): ?>
+    <?php foreach($errors as $error): ?>
+        <p><?=$error?></p>
+    <?php endforeach; ?>
+<?php endif?>
+
 <?php echo anchor(base_url('region/insert'), lang('add')); ?>
 <!-- A rekordlistát csak akkor ha nem üres -->
 

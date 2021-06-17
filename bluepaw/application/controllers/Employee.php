@@ -32,11 +32,17 @@ class Employee extends CI_Controller {
         {
             //listázunk
             //Itt lesz a userdata error
-            
+            $errors = [];
+            if($this->session->has_userdata('errors'))
+            {
+                $errors = $this->session->userdata('errors');
+                $this->session->unset_userdata('errors');
+            }
             //paraméterek átadása a nézetnek
             $view_params = [
                 'title' => 'Oldal címe',
                 'records' => $this->employee_model->get_list(),
+                'errors' => $errors
             ];
             //nézet meghívása
             $this->load->view('employee/list', $view_params);
@@ -69,7 +75,12 @@ class Employee extends CI_Controller {
     public function insert() {
         if(!$this->ion_auth->in_group(['admin', 'employee_manager'], false, false))
         {
-            redirect(base_url());
+            $errors = [
+                lang('permission_error_insert')
+            ];
+            
+            $this->session->set_userdata(['errors' => $errors]);
+            redirect(base_url('employee/list'));
         }
         
         $this->load->library('form_validation');
@@ -116,7 +127,12 @@ class Employee extends CI_Controller {
     public function update($employee_id = NULL) {
         if(!$this->ion_auth->in_group(['admin', 'employee_manager'], false, false))
         {
-            redirect(base_url());
+            $errors = [
+                lang('permission_error_modify')
+            ];
+            
+            $this->session->set_userdata(['errors' => $errors]);
+            redirect(base_url('employee/list'));
         }
         
         if($employee_id == NULL)
@@ -189,11 +205,11 @@ class Employee extends CI_Controller {
         {
             
             $errors = [
-                'Nincs jogosultságod telepek törléséhez! Csak Admin jogú felhasználó teheti meg.'
+                lang('permission_error_delete')
             ];
             
             $this->session->set_userdata(['errors' => $errors]);
-            redirect(base_url());
+            redirect(base_url('employee/list'));
         }
         
         

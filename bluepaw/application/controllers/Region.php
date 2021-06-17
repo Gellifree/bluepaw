@@ -72,7 +72,12 @@ class Region extends CI_Controller{
     {
         if(!$this->ion_auth->in_group(['admin', 'region_manager'], false, false))
         {
-            redirect(base_url());
+            $errors = [
+                lang('permission_error_insert')
+            ];
+            
+            $this->session->set_userdata(['errors' => $errors]);
+            redirect(base_url('region/list'));
         }
         
         $this->load->library('form_validation');
@@ -103,7 +108,12 @@ class Region extends CI_Controller{
     public function update($region_id = NULL) {
         if(!$this->ion_auth->in_group(['admin', 'region_manager'], false, false))
         {
-            redirect(base_url());
+            $errors = [
+                lang('permission_error_modify')
+            ];
+            
+            $this->session->set_userdata(['errors' => $errors]);
+            redirect(base_url('region/list'));
         }
         
         if($region_id == NULL)
@@ -158,11 +168,11 @@ class Region extends CI_Controller{
         {
             
             $errors = [
-                'Nincs jogosultságod telepek törléséhez! Csak Admin jogú felhasználó teheti meg.'
+                lang('permission_error_delete')
             ];
             
             $this->session->set_userdata(['errors' => $errors]);
-            redirect(base_url());
+            redirect(base_url('region/list'));
         }
         
         

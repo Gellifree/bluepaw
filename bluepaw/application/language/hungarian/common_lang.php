@@ -22,3 +22,7 @@ $lang['back_to_list'] = 'Vissza a teljes lista nézetre';
 
 $lang['id_error'] = 'Nincs ilyen azonosítóval rendelkező elem.';
 $lang['param_error'] = 'A paraméter nem megfelelő.';
+
+$lang['permission_error_insert'] = 'Nincs jogosultságod hozzáadni ehez a listához.';
+$lang['permission_error_modify'] = 'Nincs jogolsultságod módosítani ebben a listában.';
+$lang['permission_error_delete'] = 'Nincs jogosultságod törölni ebből a listából.';

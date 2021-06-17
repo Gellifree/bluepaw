@@ -1,9 +1,7 @@
 <?php $this->load->view('common/bootstrap'); ?>
 
 <h1> <?= $title ?> </h1>
-
 <?php if(!empty($errors)): ?>
-
     <?php foreach($errors as $error): ?>
         <p><?=$error?></p>
     <?php endforeach; ?>

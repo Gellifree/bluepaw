@@ -1,10 +1,5 @@
 <?php $this->load->view('common/bootstrap'); ?>
 
-<?php $this->load->view('common/bootstrap'); ?>
-
-
-
-
 
 <?php echo validation_errors(); ?>
 
@@ -19,6 +14,7 @@
         ['placeholder' => 'Régió neve']
     ); 
 ?> <br/>
+
 
 <?php echo form_textarea
     (
