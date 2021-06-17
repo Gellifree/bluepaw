@@ -80,7 +80,7 @@ class Region extends CI_Controller{
         
         if($this->form_validation->run() == TRUE)
         {
-            $nev = $this->input->post('region_nev');
+            $nev = $this->input->post('nev');
             $leiras = !empty($this->input->post('leiras')) ? $this->input->post('leiras') : NULL;
             
             $id = $this->region_model->insert($nev, $leiras);
