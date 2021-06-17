@@ -37,12 +37,20 @@ class Region_model extends CI_Model{
     
     public function delete($id)
     {
-        
+        $this->db->where('id', $id);
+        return $this->db->delete('regio');
     }
     
     public function update($id, $nev, $leiras)
     {
+        $record = [
+            'id' => $id,
+            'nev' => $nev,
+            'leiras' => $leiras,
+        ];
         
+        $this->db->where('id', $id);
+        return $this->db->update('regio', $record);
     }
     
     public function insert($nev, $leiras)

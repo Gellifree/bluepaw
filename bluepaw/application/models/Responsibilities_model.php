@@ -37,12 +37,20 @@ class Responsibilities_model extends CI_Model{
     
     public function delete($id)
     {
-        
+        $this->db->where('id', $id);
+        return $this->db->delete('feladatkor');
     }
     
-    public function update($id)
+    public function update($id, $nev, $leiras)
     {
+        $record = [
+            'id' => $id,
+            'nev' => $nev,
+            'leiras' => $leiras,
+        ];
         
+        $this->db->where('id', $id);
+        return $this->db->update('feladatkor', $record);
     }
     
     //Paraméterek később

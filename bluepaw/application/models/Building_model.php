@@ -38,12 +38,21 @@ class Building_model extends CI_Model {
     
     public function delete($id)
     {
-        
+        $this->db->where('id', $id);
+        return $this->db->delete('epulet');
     }
     
-    public function update($id)
+    public function update($id, $nev, $leiras, $regio)
     {
+        $record = [
+            'id' => $id,
+            'nev' => $nev,
+            'leiras' => $leiras,
+            'regio' => $regio
+        ];
         
+        $this->db->where('id', $id);
+        return $this->db->update('epulet', $record);
     }
     
     //Paraméterek később

@@ -39,12 +39,21 @@ class Employee_model extends CI_Model {
     
     public function delete($id)
     {
-        
+        $this->db->where('id', $id);
+        return $this->db->delete('alkalmazott');
     }
     
-    public function update($id)
+    public function update($id, $nev, $iroda, $munkakor)
     {
+        $record = [
+            'id' => $id,
+            'nev' => $nev,
+            'iroda' => $iroda,
+            'munkakor' => $munkakor
+        ];
         
+        $this->db->where('id', $id);
+        return $this->db->update('alkalmazott', $record);
     }
     
     //Paraméterek később

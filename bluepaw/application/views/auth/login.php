@@ -3,8 +3,14 @@
 <h3><?php echo lang('login_heading');?></h3>
 <p><?php echo lang('login_subheading');?></p>
 
-<div class="alert-primary" id="infoMessage"><?php echo $message;?></div>
+
 </div>
+
+<div class="container">
+    <div class="alert-primary conitainer" id="infoMessage"><?php echo $message;?></div>
+</div>
+
+
 
 <div class="container p-3 my-3 bg-dark text-white">
 <?php echo form_open("auth/login");?>

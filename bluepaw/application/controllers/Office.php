@@ -105,10 +105,109 @@ class Office extends CI_Controller{
     }
     
     public function update($office_id = NULL) {
-        echo 'update';
+        if(!$this->ion_auth->in_group(['admin', 'office_manager'], false, false))
+        {
+            redirect(base_url());
+        }
+        
+        if($office_id == NULL)
+        {
+            redirect(base_url('office/list'));
+        }
+        
+        if(!is_numeric($office_id))
+        {
+            redirect(base_url('office/list'));
+        }
+        
+        $record = $this->office_model->get_one($office_id);
+        
+        if($record == NULL || empty($record))
+        {
+            redirect(base_url('office/list'));
+        }
+        
+        $this->load->library('form_validation');
+        
+        $this->form_validation->set_rules('nev', 'Iroda Megnevezése', 'required|min_length[3]');
+        $this->form_validation->set_rules('kapacitas', 'Kapacitás', 'required');
+        $this->form_validation->set_rules('epulet', 'Épület', 'required');
+        
+        if($this->form_validation->run() == TRUE)
+        {
+            $nev = $this->input->post('nev');
+            $kapacitas = !empty($this->input->post('kapacitas')) ? $this->input->post('kapacitas') : NULL;
+            $epulet = $this->input->post('epulet');
+                   
+            if($this->office_model->update($office_id, $nev, $kapacitas, $epulet))
+            {
+                redirect(base_url('office/list'));
+            }
+            else
+            {
+                show_error('Sikertelen módosítás!');
+            }
+        }
+        else
+        {
+            
+            $list = $this->building_model->get_list();
+            $buildings = [];
+            foreach($list as &$item)
+            {
+                $buildings[$item->id] = $item->nev;
+            }
+       
+            
+            $view_params = [
+                'record' => $record,
+                'epuletek' => $buildings
+            ];
+        
+            $this->load->helper('form');
+            $this->load->view('office/update', $view_params);
+        }
+        
     }
     
     public function delete($office_id = NULL) {
-        echo 'delete';
+        if(!$this->ion_auth->is_admin())
+        {
+            
+            $errors = [
+                'Nincs jogosultságod telepek törléséhez! Csak Admin jogú felhasználó teheti meg.'
+            ];
+            
+            $this->session->set_userdata(['errors' => $errors]);
+            redirect(base_url());
+        }
+        
+        
+        //$this->load->helper('url');
+        
+        if($office_id == NULL)
+        {
+            redirect(base_url('office/list'));
+        }
+        
+        if(!is_numeric($office_id))
+        {
+            redirect(base_url('office/list'));
+        }
+        
+        $record = $this->office_model->get_one($office_id);
+        if($record == NULL || empty($record))
+        {
+            redirect(base_url('office/list'));
+        }
+        
+        if($this->office_model->delete($office_id))
+        {
+            redirect(base_url('office/list'));
+        }
+        else
+        {
+            show_error('A törlés sikertelen');
+        }
     }
 }

@@ -15,7 +15,7 @@
 <?php echo form_input
     (
         ['type' => 'text', 'name' => 'nev', 'required' => 'required', 'minlength' => 2],
-        set_value('nev', ''),
+        set_value('nev', $record->nev),
         ['placeholder' => 'Régió neve']
     ); 
 ?> <br/>
@@ -23,7 +23,7 @@
 <?php echo form_textarea
     (
         ['name'=> 'leiras'],
-        set_value('leiras', ''),
+        set_value('leiras', $record->leiras),
         ['placeholder' => 'Régió leírása']
     );
 ?> <br/>

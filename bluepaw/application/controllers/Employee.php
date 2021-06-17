@@ -114,10 +114,114 @@ class Employee extends CI_Controller {
     }
     
     public function update($employee_id = NULL) {
-        echo 'update';
+        if(!$this->ion_auth->in_group(['admin', 'employee_manager'], false, false))
+        {
+            redirect(base_url());
+        }
+        
+        if($employee_id == NULL)
+        {
+            redirect(base_url('employee/list'));
+        }
+        
+        if(!is_numeric($employee_id))
+        {
+            redirect(base_url('employee/list'));
+        }
+        $record = $this->employee_model->get_one($employee_id);
+        if($record == NULL || empty($record))
+        {
+            redirect(base_url('employee/list'));
+        }
+        
+        $this->load->library('form_validation');
+        
+        $this->form_validation->set_rules('nev', 'Állat neve', 'required|min_length[3]');
+        $this->form_validation->set_rules('iroda', 'Iroda', 'required');
+        $this->form_validation->set_rules('munkakor', 'Munkakör', 'required');
+        
+        if($this->form_validation->run() == TRUE)
+        {
+            $nev = $this->input->post('nev');
+            $iroda = !empty($this->input->post('iroda')) ? $this->input->post('iroda') : NULL;
+            $munkakor = $this->input->post('munkakor');
+                   
+            if($this->employee_model->update($employee_id, $nev, $iroda, $munkakor))
+            {
+                redirect(base_url('employee/list'));
+            }
+            else
+            {
+                show_error('Sikertelen módosítás!');
+            }
+        }
+        else
+        {
+            
+            $list = $this->office_model->get_list();
+            $offices = [];
+            foreach($list as &$item)
+            {
+                $offices[$item->id] = $item->nev;
+            }
+            
+            $list = $this->position_model->get_list();
+            $positions = [];
+            foreach($list as &$item)
+            {
+                $positions[$item->id] = $item->nev;
+            }
+       
+            
+            $view_params = [
+                'record' => $record,
+                'offices' => $offices,
+                'positions' => $positions
+            ];
+        
+            $this->load->helper('form');
+            $this->load->view('employee/update', $view_params);
+        }
     }
     
     public function delete($employee_id = NULL) {
-        echo 'delete';
+        if(!$this->ion_auth->is_admin())
+        {
+            
+            $errors = [
+                'Nincs jogosultságod telepek törléséhez! Csak Admin jogú felhasználó teheti meg.'
+            ];
+            
+            $this->session->set_userdata(['errors' => $errors]);
+            redirect(base_url());
+        }
+        
+        
+        //$this->load->helper('url');
+        
+        if($employee_id == NULL)
+        {
+            redirect(base_url('employee/list'));
+        }
+        
+        if(!is_numeric($employee_id))
+        {
+            redirect(base_url('employee/list'));
+        }
+        
+        $record = $this->employee_model->get_one($employee_id);
+        if($record == NULL || empty($record))
+        {
+            redirect(base_url('employee/list'));
+        }
+        
+        if($this->employee_model->delete($employee_id))
+        {
+            redirect(base_url('employee/list'));
+        }
+        else
+        {
+            show_error('A törlés sikertelen');
+        }
     }
 }

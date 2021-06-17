@@ -89,10 +89,95 @@ class Responsibilities extends CI_Controller{
     }
     
     public function update($resp_id = NULL) {
-        echo 'update';
+        if(!$this->ion_auth->in_group(['admin', 'responsibility_manager'], false, false))
+        {
+            redirect(base_url());
+        }
+        
+        if($resp_id == NULL)
+        {
+            redirect(base_url('responsibilities/list'));
+        }
+        
+        if(!is_numeric($resp_id))
+        {
+            redirect(base_url('responsibilities/list'));
+        }
+        
+        $record = $this->responsibilities_model->get_one($resp_id);
+        
+        if($record == NULL || empty($record))
+        {
+            redirect(base_url('responsibilities/list'));
+        }
+        
+        $this->load->library('form_validation');
+        
+        $this->form_validation->set_rules('nev', 'Állat neve', 'required|min_length[3]');
+        
+        if($this->form_validation->run() == TRUE)
+        {
+            $nev = $this->input->post('nev');
+            $leiras = !empty($this->input->post('leiras')) ? $this->input->post('leiras') : NULL;
+                   
+            if($this->responsibilities_model->update($resp_id, $nev,  $leiras, $leiras))
+            {
+                redirect(base_url('responsibilities/list'));
+            }
+            else
+            {
+                show_error('Sikertelen módosítás!');
+            }
+        }
+        else
+        {
+            $view_params = [
+                'record' => $record,
+            ];
+        
+            $this->load->helper('form');
+            $this->load->view('responsibilities/update', $view_params);
+        }
     }
     
     public function delete($resp_id = NULL) {
-        echo 'delete';
+        if(!$this->ion_auth->is_admin())
+        {
+            
+            $errors = [
+                'Nincs jogosultságod telepek törléséhez! Csak Admin jogú felhasználó teheti meg.'
+            ];
+            
+            $this->session->set_userdata(['errors' => $errors]);
+            redirect(base_url());
+        }
+        
+        
+        //$this->load->helper('url');
+        
+        if($resp_id == NULL)
+        {
+            redirect(base_url('responsibilities/list'));
+        }
+        
+        if(!is_numeric($resp_id))
+        {
+            redirect(base_url('responsibilities/list'));
+        }
+        
+        $record = $this->responsibilities_model->get_one($resp_id);
+        if($record == NULL || empty($record))
+        {
+            redirect(base_url('responsibilities/list'));
+        }
+        
+        if($this->responsibilities_model->delete($resp_id))
+        {
+            redirect(base_url('responsibilities/list'));
+        }
+        else
+        {
+            show_error('A törlés sikertelen');
+        }
     }
 }

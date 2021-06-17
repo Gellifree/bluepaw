@@ -40,12 +40,21 @@ class Position_model extends CI_Model{
     
     public function delete($id)
     {
-        
+        $this->db->where('id', $id);
+        return $this->db->delete('munkakor');
     }
     
-    public function update($id)
+    public function update($id, $nev, $leiras, $fizetes)
     {
+        $record = [
+            'id' => $id,
+            'nev' => $nev,
+            'leiras' => $leiras,
+            'fizetes' => $fizetes
+        ];
         
+        $this->db->where('id', $id);
+        return $this->db->update('munkakor', $record);
     }
     
     //Paraméterek később

@@ -104,11 +104,111 @@ class Dog extends CI_Controller{
     }
     
     public function update($dog_id = NULL) {
-        echo 'update';
+        if(!$this->ion_auth->in_group(['admin', 'dog_manager'], false, false))
+        {
+            redirect(base_url());
+        }
+        
+        if($dog_id == NULL)
+        {
+            redirect(base_url('dog/list'));
+        }
+        
+        if(!is_numeric($dog_id))
+        {
+            redirect(base_url('dog/list'));
+        }
+        
+        $record = $this->dog_model->get_one($dog_id);
+        
+        if($record == NULL || empty($record))
+        {
+            redirect(base_url('dog/list'));
+        }
+        
+        $this->load->library('form_validation');
+        
+        $this->form_validation->set_rules('nev', 'Állat neve', 'required|min_length[3]');
+        $this->form_validation->set_rules('epulet', 'Hozzátartozó Épület', 'required');
+        
+        if($this->form_validation->run() == TRUE)
+        {
+            $nev = $this->input->post('nev');
+            $leiras = !empty($this->input->post('leiras')) ? $this->input->post('leiras') : NULL;
+            $nem = $this->input->post('nem');
+            $szul_datum = $this->input->post('szul_datum');
+            $kep_eleres = $this->input->post('kep_eleres');
+            $epulet = $this->input->post('epulet');
+                   
+            if($this->dog_model->update($dog_id, $nev,  $leiras, $nem, $szul_datum, $kep_eleres, $epulet))
+            {
+                redirect(base_url('dog/list'));
+            }
+            else
+            {
+                show_error('Sikertelen módosítás!');
+            }
+        }
+        else
+        {
+            
+            $list = $this->building_model->get_list();
+            $buildings = [];
+            foreach($list as &$item)
+            {
+                $buildings[$item->id] = $item->nev;
+            }
+       
+            
+            $view_params = [
+                'record' => $record,
+                'buildings' => $buildings
+            ];
+        
+            $this->load->helper('form');
+            $this->load->view('dog/update', $view_params);
+        }
     }
     
     public function delete($dog_id = NULL) {
-        echo 'delete';
+        if(!$this->ion_auth->is_admin())
+        {
+            
+            $errors = [
+                'Nincs jogosultságod telepek törléséhez! Csak Admin jogú felhasználó teheti meg.'
+            ];
+            
+            $this->session->set_userdata(['errors' => $errors]);
+            redirect(base_url());
+        }
+        
+        
+        //$this->load->helper('url');
+        
+        if($dog_id == NULL)
+        {
+            redirect(base_url('dog/list'));
+        }
+        
+        if(!is_numeric($dog_id))
+        {
+            redirect(base_url('dog/list'));
+        }
+        
+        $record = $this->dog_model->get_one($dog_id);
+        if($record == NULL || empty($record))
+        {
+            redirect(base_url('dog/list'));
+        }
+        
+        if($this->dog_model->delete($dog_id))
+        {
+            redirect(base_url('dog/list'));
+        }
+        else
+        {
+            show_error('A törlés sikertelen');
+        }
     }
     
 }

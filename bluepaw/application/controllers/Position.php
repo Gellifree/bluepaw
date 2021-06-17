@@ -90,10 +90,98 @@ class Position extends CI_Controller{
     }
     
     public function update($position_id = NULL) {
-        echo 'update';
+        if(!$this->ion_auth->in_group(['admin', 'position_manager'], false, false))
+        {
+            redirect(base_url());
+        }
+        
+        if($position_id == NULL)
+        {
+            redirect(base_url('position/list'));
+        }
+        
+        if(!is_numeric($position_id))
+        {
+            redirect(base_url('position/list'));
+        }
+        
+        $record = $this->position_model->get_one($position_id);
+        
+        if($record == NULL || empty($record))
+        {
+            redirect(base_url('position/list'));
+        }
+        
+        $this->load->library('form_validation');
+        
+        $this->form_validation->set_rules('nev', 'Iroda Megnevezése', 'required|min_length[3]');
+        $this->form_validation->set_rules('fizetes', 'Épület', 'required');
+        
+        if($this->form_validation->run() == TRUE)
+        {
+            $nev = $this->input->post('nev');
+            $leiras = !empty($this->input->post('leiras')) ? $this->input->post('leiras') : NULL;
+            $fizetes = $this->input->post('fizetes');
+
+                   
+            if($this->position_model->update($position_id, $nev, $leiras, $fizetes))
+            {
+                redirect(base_url('position/list'));
+            }
+            else
+            {
+                show_error('Sikertelen módosítás!');
+            }
+        }
+        else
+        {
+            $view_params = [
+                'record' => $record,
+            ];
+        
+            $this->load->helper('form');
+            $this->load->view('position/update', $view_params);
+        }
     }
     
     public function delete($position_id = NULL) {
-        echo 'delete';
+        if(!$this->ion_auth->is_admin())
+        {
+            
+            $errors = [
+                'Nincs jogosultságod telepek törléséhez! Csak Admin jogú felhasználó teheti meg.'
+            ];
+            
+            $this->session->set_userdata(['errors' => $errors]);
+            redirect(base_url());
+        }
+        
+        
+        //$this->load->helper('url');
+        
+        if($position_id == NULL)
+        {
+            redirect(base_url('position/list'));
+        }
+        
+        if(!is_numeric($position_id))
+        {
+            redirect(base_url('position/list'));
+        }
+        
+        $record = $this->position_model->get_one($position_id);
+        if($record == NULL || empty($record))
+        {
+            redirect(base_url('position/list'));
+        }
+        
+        if($this->position_model->delete($position_id))
+        {
+            redirect(base_url('position/list'));
+        }
+        else
+        {
+            show_error('A törlés sikertelen');
+        }
     }
 }

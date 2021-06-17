@@ -38,12 +38,24 @@ class Dog_model  extends CI_Model{
     
     public function delete($id)
     {
-        
+        $this->db->where('id', $id);
+        return $this->db->delete('kutya');
     }
     
-    public function update($id)
+    public function update($id, $nev, $leiras, $nem, $szul_datum, $kep_eleres, $epulet)
     {
+        $record = [
+            'id' => $id,
+            'nev' => $nev,
+            'leiras' => $leiras,
+            'nem' => $nem,
+            'szul_ev' => $szul_datum,
+            'kep_eleres' => $kep_eleres,
+            'epulet' => $epulet
+        ];
         
+        $this->db->where('id', $id);
+        return $this->db->update('kutya', $record);
     }
     
     //Paraméterek később

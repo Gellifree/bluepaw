@@ -76,12 +76,12 @@ class Region extends CI_Controller{
         }
         
         $this->load->library('form_validation');
-        $this->form_validation->set_rules('region_nev', 'Régió neve', 'required|min_length[3]');
+        $this->form_validation->set_rules('nev', 'Régió neve', 'required|min_length[3]');
         
         if($this->form_validation->run() == TRUE)
         {
             $nev = $this->input->post('region_nev');
-            $leiras = !empty($this->input->post('region_leiras')) ? $this->input->post('region_leiras') : NULL;
+            $leiras = !empty($this->input->post('leiras')) ? $this->input->post('leiras') : NULL;
             
             $id = $this->region_model->insert($nev, $leiras);
             if($id)
@@ -101,11 +101,97 @@ class Region extends CI_Controller{
     }
     
     public function update($region_id = NULL) {
-        echo 'update';
+        if(!$this->ion_auth->in_group(['admin', 'region_manager'], false, false))
+        {
+            redirect(base_url());
+        }
+        
+        if($region_id == NULL)
+        {
+            redirect(base_url('region/list'));
+        }
+        
+        if(!is_numeric($region_id))
+        {
+            redirect(base_url('region/list'));
+        }
+        
+        $record = $this->region_model->get_one($region_id);
+        
+        if($record == NULL || empty($record))
+        {
+            redirect(base_url('region/list'));
+        }
+        
+        $this->load->library('form_validation');
+        
+        $this->form_validation->set_rules('nev', 'Állat neve', 'required|min_length[3]');
+        
+        if($this->form_validation->run() == TRUE)
+        {
+            $nev = $this->input->post('nev');
+            $leiras = !empty($this->input->post('leiras')) ? $this->input->post('leiras') : NULL;
+                   
+            if($this->region_model->update($region_id, $nev, $leiras))
+            {
+                redirect(base_url('region/list'));
+            }
+            else
+            {
+                show_error('Sikertelen módosítás!');
+            }
+        }
+        else
+        {
+
+            $view_params = [
+                'record' => $record,
+            ];
+        
+            $this->load->helper('form');
+            $this->load->view('region/update', $view_params);
+        }
     }
     
     public function delete($region_id = NULL) {
-        echo 'delete';
+        if(!$this->ion_auth->is_admin())
+        {
+            
+            $errors = [
+                'Nincs jogosultságod telepek törléséhez! Csak Admin jogú felhasználó teheti meg.'
+            ];
+            
+            $this->session->set_userdata(['errors' => $errors]);
+            redirect(base_url());
+        }
+        
+        
+        //$this->load->helper('url');
+        
+        if($region_id == NULL)
+        {
+            redirect(base_url('region/list'));
+        }
+        
+        if(!is_numeric($region_id))
+        {
+            redirect(base_url('region/list'));
+        }
+        
+        $record = $this->region_model->get_one($region_id);
+        if($record == NULL || empty($record))
+        {
+            redirect(base_url('region/list'));
+        }
+        
+        if($this->region_model->delete($region_id))
+        {
+            redirect(base_url('region/list'));
+        }
+        else
+        {
+            show_error('A törlés sikertelen');
+        }
     }
     
 }

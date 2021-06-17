@@ -38,12 +38,21 @@ class Office_model extends CI_Model {
     
     public function delete($id)
     {
-        
+        $this->db->where('id', $id);
+        return $this->db->delete('iroda');
     }
     
-    public function update($id)
+    public function update($id, $nev, $kapacitas, $epulet)
     {
+        $record = [
+            'id' => $id,
+            'nev' => $nev,
+            'kapacitas' => $kapacitas,
+            'epulet' => $epulet
+        ];
         
+        $this->db->where('id', $id);
+        return $this->db->update('iroda', $record);
     }
     
     //Paraméterek később
