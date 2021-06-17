@@ -22,7 +22,8 @@ class Building extends CI_Controller{
         
         $this->load->model('building_model');
         $this->load->model('region_model');
-        //$this->lang->load('building');
+        $this->lang->load('building');
+        $this->lang->load('region');
     }
     
     public function list($building_id = NULL)
@@ -39,7 +40,7 @@ class Building extends CI_Controller{
             
             //paraméterek átadása a nézetnek
             $view_params = [
-                'title' => 'Épületek listája',
+                'title' => lang('building_title_list'),
                 'records' => $this->building_model->get_list(),
                 'errors' => $errors
             ];
@@ -51,7 +52,7 @@ class Building extends CI_Controller{
         {
             if(!is_numeric($building_id))
             {
-                show_error('Nem helyes paraméterérték');
+                show_error(lang('param_error'));
                 redirect(base_url());
             }
             
@@ -59,11 +60,11 @@ class Building extends CI_Controller{
             
             if(empty($record))
             {
-                show_error('Ezzel az ID-vel nincs elem.');
+                show_error(lang('id_error'));
             }
             
             $view_params = [
-                'title' => 'Részletes oldal címe',
+                'title' => lang('building_title_one'),
                 'record' => $record
             ];
             
@@ -84,8 +85,8 @@ class Building extends CI_Controller{
         
         $this->load->library('form_validation');
         
-        $this->form_validation->set_rules('nev', 'Épület Megnevezése', 'required|min_length[3]');
-        $this->form_validation->set_rules('regio', 'Hozzátartozó Régió', 'required');
+        $this->form_validation->set_rules('nev', lang('building_name'), 'required|min_length[3]');
+        $this->form_validation->set_rules('regio', lang('region_name'), 'required');
         
         if($this->form_validation->run() == TRUE)
         {
@@ -144,8 +145,8 @@ class Building extends CI_Controller{
         }
         
         $this->load->library('form_validation');
-        $this->form_validation->set_rules('nev', 'Épület neve', 'required|min_length[2]');
-        $this->form_validation->set_rules('regio', 'Hozzátartozó Régió', 'required');
+        $this->form_validation->set_rules('nev', lang('building_name'), 'required|min_length[2]');
+        $this->form_validation->set_rules('regio', lang('region_name'), 'required');
 
         
         if($this->form_validation->run() == TRUE)
@@ -160,7 +161,7 @@ class Building extends CI_Controller{
             }
             else
             {
-                show_error('Sikertelen módosítás!');
+                show_error(lang('modify_error'));
             }
         }
         else
@@ -224,7 +225,7 @@ class Building extends CI_Controller{
         }
         else
         {
-            show_error('A törlés sikertelen');
+            show_error(lang('delete_error'));
         }
     }
 }

@@ -22,7 +22,7 @@ class Office extends CI_Controller{
         
         $this->load->model('office_model');
         $this->load->model('building_model');
-        //$this->lang->load('office'); 
+        $this->lang->load('office'); 
     }
     
     public function list($office_id = NULL)
@@ -51,7 +51,7 @@ class Office extends CI_Controller{
         {
             if(!is_numeric($office_id))
             {
-                show_error('Nem helyes paraméterérték');
+                show_error(lang('param_error'));
                 redirect(base_url());
             }
             
@@ -59,7 +59,7 @@ class Office extends CI_Controller{
             
             if(empty($record))
             {
-                show_error('Ezzel az ID-vel nincs elem.');
+                show_error(lang('id_error'));
             }
             
             $view_params = [
@@ -161,7 +161,7 @@ class Office extends CI_Controller{
             }
             else
             {
-                show_error('Sikertelen módosítás!');
+                show_error(lang('modify_error'));
             }
         }
         else
@@ -223,7 +223,7 @@ class Office extends CI_Controller{
         }
         else
         {
-            show_error('A törlés sikertelen');
+            show_error(lang('delete_error'));
         }
     }
 }

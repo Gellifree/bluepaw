@@ -21,8 +21,9 @@ class Dog extends CI_Controller{
         }
         
         $this->load->model('dog_model');
-         $this->load->model('building_model');
-        //$this->lang->load('dog'); 
+        $this->load->model('building_model');
+        $this->lang->load('dog'); 
+        $this->lang->load('building'); 
     }
     
     public function list($dog_id = NULL)
@@ -39,7 +40,7 @@ class Dog extends CI_Controller{
             }
             //paraméterek átadása a nézetnek
             $view_params = [
-                'title' => 'Oldal címe',
+                'title' => lang('dog_title_list'),
                 'records' => $this->dog_model->get_list(),
                 'errors' => $errors
             ];
@@ -51,7 +52,7 @@ class Dog extends CI_Controller{
         {
             if(!is_numeric($dog_id))
             {
-                show_error('Nem helyes paraméterérték');
+                show_error(lang('param_error'));
                 redirect(base_url());
             }
             
@@ -59,11 +60,11 @@ class Dog extends CI_Controller{
             
             if(empty($record))
             {
-                show_error('Ezzel az ID-vel nincs elem.');
+                show_error(lang('id_error'));
             }
             
             $view_params = [
-                'title' => 'Részletes oldal címe',
+                'title' => lang('dog_title_one'),
                 'record' => $record
             ];
             
@@ -84,8 +85,8 @@ class Dog extends CI_Controller{
         
         $this->load->library('form_validation');
         
-        $this->form_validation->set_rules('nev', 'Állat neve', 'required|min_length[3]');
-        $this->form_validation->set_rules('epulet', 'Hozzátartozó Épület', 'required');
+        $this->form_validation->set_rules('nev', lang('dog_name'), 'required|min_length[3]');
+        $this->form_validation->set_rules('epulet', lang('building_name'), 'required');
         
         if($this->form_validation->run() == TRUE)
         {
@@ -144,8 +145,8 @@ class Dog extends CI_Controller{
         
         $this->load->library('form_validation');
         
-        $this->form_validation->set_rules('nev', 'Állat neve', 'required|min_length[3]');
-        $this->form_validation->set_rules('epulet', 'Hozzátartozó Épület', 'required');
+        $this->form_validation->set_rules('nev', lang('dog_name'), 'required|min_length[3]');
+        $this->form_validation->set_rules('epulet', lang('building_name'), 'required');
         
         if($this->form_validation->run() == TRUE)
         {
@@ -162,7 +163,7 @@ class Dog extends CI_Controller{
             }
             else
             {
-                show_error('Sikertelen módosítás!');
+                show_error(lang('modify_error'));
             }
         }
         else
@@ -223,7 +224,7 @@ class Dog extends CI_Controller{
         }
         else
         {
-            show_error('A törlés sikertelen');
+            show_error(lang('delete_error'));
         }
     }
     

@@ -23,7 +23,7 @@ class Employee extends CI_Controller {
         $this->load->model('employee_model');
         $this->load->model('office_model');
         $this->load->model('position_model');
-        //$this->lang->load('employee'); 
+        $this->lang->load('employee'); 
     }
     
     public function list($employee_id = NULL)
@@ -52,7 +52,7 @@ class Employee extends CI_Controller {
         {
             if(!is_numeric($employee_id))
             {
-                show_error('Nem helyes paraméterérték');
+                show_error(lang('param_error'));
                 redirect(base_url());
             }
             
@@ -60,7 +60,7 @@ class Employee extends CI_Controller {
             
             if(empty($record))
             {
-                show_error('Ezzel az ID-vel nincs elem.');
+                show_error(lang('id_error'));
             }
             
             $view_params = [
@@ -168,7 +168,7 @@ class Employee extends CI_Controller {
             }
             else
             {
-                show_error('Sikertelen módosítás!');
+                show_error(lang('modify_error'));
             }
         }
         else
@@ -237,7 +237,7 @@ class Employee extends CI_Controller {
         }
         else
         {
-            show_error('A törlés sikertelen');
+            show_error(lang('delete_error'));
         }
     }
 }

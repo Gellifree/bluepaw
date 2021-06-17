@@ -21,7 +21,7 @@ class Region extends CI_Controller{
         }
         
         $this->load->model('region_model');
-        //$this->lang->load('region'); 
+        $this->lang->load('region'); 
     }
     
     public function list($region_id = NULL) {
@@ -46,7 +46,7 @@ class Region extends CI_Controller{
         {
             if(!is_numeric($region_id))
             {
-                show_error('Nem helyes paraméterérték!');
+                show_error(lang('param_error'));
                 redirect(base_url());
             }
             
@@ -55,7 +55,7 @@ class Region extends CI_Controller{
             
             if(empty($record))
             {
-                show_error('Az id-vel nem létezik rekord');
+                show_error(lang('id_error'));
             }
             $view_params = [
                 'title' => lang('site_show_details'),
@@ -95,7 +95,7 @@ class Region extends CI_Controller{
             }
             else
             {
-                show_error('Hiba a beszúrás közben');
+                show_error(lang('insert_error'));
             }
         }
         else
@@ -148,7 +148,7 @@ class Region extends CI_Controller{
             }
             else
             {
-                show_error('Sikertelen módosítás!');
+                show_error(lang('modify_error'));
             }
         }
         else
@@ -200,7 +200,7 @@ class Region extends CI_Controller{
         }
         else
         {
-            show_error('A törlés sikertelen');
+            show_error(lang('delete_error'));
         }
     }
     

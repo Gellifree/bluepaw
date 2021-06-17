@@ -17,8 +17,8 @@
         <thead>
             <tr>
                 <th> <?php echo lang('identification'); ?>  </th>
-                <th> <?php echo 'Dog name' ?>          </th>
-                <th> <?php echo 'Building name' ?>            </th>
+                <th> <?php echo lang('dog_name') ?>          </th>
+                <th> <?php echo lang('building_name') ?>            </th>
                 <th> <?php echo lang('operations'); ?>      </th>
             </tr>
         </thead>

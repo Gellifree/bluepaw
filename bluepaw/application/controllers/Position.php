@@ -21,7 +21,7 @@ class Position extends CI_Controller{
         }
         
         $this->load->model('position_model');
-        //$this->lang->load('position'); 
+        $this->lang->load('position'); 
     }
     
     public function list($position_id = NULL)
@@ -50,7 +50,7 @@ class Position extends CI_Controller{
         {
             if(!is_numeric($position_id))
             {
-                show_error('Nem helyes paraméterérték');
+                show_error(lang('param_error'));
                 redirect(base_url());
             }
             
@@ -58,7 +58,7 @@ class Position extends CI_Controller{
             
             if(empty($record))
             {
-                show_error('Ezzel az ID-vel nincs elem.');
+                show_error(lang('id_error'));
             }
             
             $view_params = [
@@ -146,7 +146,7 @@ class Position extends CI_Controller{
             }
             else
             {
-                show_error('Sikertelen módosítás!');
+                show_error(lang('modify_error'));
             }
         }
         else
@@ -197,7 +197,7 @@ class Position extends CI_Controller{
         }
         else
         {
-            show_error('A törlés sikertelen');
+            show_error(lang('delete_error'));
         }
     }
 }

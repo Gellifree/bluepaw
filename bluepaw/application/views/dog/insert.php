@@ -3,17 +3,35 @@
 <?php echo form_open(); ?>
 
 <?php echo form_error('nev'); ?>
-<?php echo form_input(['type' => 'text', 'name' => 'nev'], set_value('nev', ''), ['placeholder' => 'Kutya neve']); ?>
+<?php echo form_input(
+        ['type' => 'text', 'name' => 'nev'],
+        set_value('nev', ''),
+        ['placeholder' => lang('dog_name')]);
+?>
 <br/>
 
 <?php echo form_error('leiras'); ?>
-<?php echo form_textarea(['type' => 'text', 'name' => 'leiras'], set_value('leiras', ''), ['placeholder' => 'Leírás']); ?>
+<?php echo form_textarea(
+        ['type' => 'text', 'name' => 'leiras'],
+        set_value('leiras', ''),
+        ['placeholder' => lang('description')]);
+?>
 <br/>
 
 <?php echo form_error('epulet'); ?>
-<?php echo form_dropdown(['name' => 'epulet'], $buildings); ?>
+<?php echo form_dropdown(
+        ['name' => 'epulet'],
+        $buildings);
+?>
 
-<?php echo form_dropdown(['name' => 'nem'], ['Fiú'=>'Fiú','Lány' => 'Lány']); ?> <br/>
+<?php echo form_dropdown(
+        ['name' => 'nem'],
+        ['Fiú'=>'Fiú','Lány' => 'Lány']);
+?>
+<br/>
 
-<?php echo form_button(['type' => 'submit', 'name' => 'submit'], lang('save')); ?>
+<?php echo form_button(
+        ['type' => 'submit', 'name' => 'submit'],
+        lang('save'));
+?>
 <?php echo form_close(); ?>
