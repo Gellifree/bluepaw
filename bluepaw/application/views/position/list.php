@@ -17,9 +17,8 @@
         <thead>
             <tr>
                 <th> <?php echo lang('identification'); ?>  </th>
-                <th> <?php echo 'Position name' ?>          </th>
-                <th> <?php echo 'Salary' ?>            </th>
-                <th> <?php echo 'Responsibilities' ?>            </th>
+                <th> <?php echo lang('position_name') ?>          </th>
+                <th> <?php echo lang('position_payment') ?>            </th>
                 <th> <?php echo lang('operations'); ?>      </th>
             </tr>
         </thead>
@@ -29,12 +28,6 @@
                 <td> <?=$record->id?> </td>
                 <td> <?=$record->nev?> </td>
                 <td> <?=$record->fizetes?> </td>
-                <!--
-                <td>
-                    <?=$record->rendelkezik_feladatkor?>
-                    Később nézzünk rá
-                </td>
-                -->
                 <td>
                     <?php echo anchor(base_url('position/list/'.$record->id), lang('details')); ?>
                     <?php echo anchor(base_url('position/delete/'.$record->id), lang('delete')); ?>

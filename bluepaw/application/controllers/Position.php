@@ -38,7 +38,7 @@ class Position extends CI_Controller{
             }
             //paraméterek átadása a nézetnek
             $view_params = [
-                'title' => 'Oldal címe',
+                'title' => lang('position_title_list'),
                 'records' => $this->position_model->get_list(),
                 'errors' => $errors
             ];
@@ -62,7 +62,7 @@ class Position extends CI_Controller{
             }
             
             $view_params = [
-                'title' => 'Részletes oldal címe',
+                'title' => lang('position_title_one'),
                 'record' => $record
             ];
             
@@ -83,8 +83,8 @@ class Position extends CI_Controller{
         
         $this->load->library('form_validation');
         
-        $this->form_validation->set_rules('nev', 'Iroda Megnevezése', 'required|min_length[3]');
-        $this->form_validation->set_rules('fizetes', 'Épület', 'required');
+        $this->form_validation->set_rules('nev', lang('position_name'), 'required|min_length[3]');
+        $this->form_validation->set_rules('fizetes', lang('position_payment'), 'required');
         
         if($this->form_validation->run() == TRUE)
         {
@@ -130,8 +130,8 @@ class Position extends CI_Controller{
         
         $this->load->library('form_validation');
         
-        $this->form_validation->set_rules('nev', 'Iroda Megnevezése', 'required|min_length[3]');
-        $this->form_validation->set_rules('fizetes', 'Épület', 'required');
+        $this->form_validation->set_rules('nev', lang('position_name'), 'required|min_length[3]');
+        $this->form_validation->set_rules('fizetes', lang('position_payment'), 'required');
         
         if($this->form_validation->run() == TRUE)
         {

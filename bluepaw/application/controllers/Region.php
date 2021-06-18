@@ -35,7 +35,7 @@ class Region extends CI_Controller{
             }
             
             $view_params = [
-                'title' => lang('region_list'),
+                'title' => lang('region_title_list'),
                 'records' => $this->region_model->get_list(),
                 'errors' => $errors
             ];
@@ -58,7 +58,7 @@ class Region extends CI_Controller{
                 show_error(lang('id_error'));
             }
             $view_params = [
-                'title' => lang('site_show_details'),
+                'title' => lang('region_title_one'),
                 'record' => $record
             ];
             
@@ -81,7 +81,7 @@ class Region extends CI_Controller{
         }
         
         $this->load->library('form_validation');
-        $this->form_validation->set_rules('nev', 'Régió neve', 'required|min_length[3]');
+        $this->form_validation->set_rules('nev', lang('region_name'), 'required|min_length[3]');
         
         if($this->form_validation->run() == TRUE)
         {
@@ -135,7 +135,7 @@ class Region extends CI_Controller{
         
         $this->load->library('form_validation');
         
-        $this->form_validation->set_rules('nev', 'Állat neve', 'required|min_length[3]');
+        $this->form_validation->set_rules('nev', lang('region_name'), 'required|min_length[3]');
         
         if($this->form_validation->run() == TRUE)
         {

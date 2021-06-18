@@ -17,9 +17,9 @@
         <thead>
             <tr>
                 <th> <?php echo lang('identification'); ?>  </th>
-                <th> <?php echo 'Employee name' ?>          </th>
-                <th> <?php echo 'Office name' ?>            </th>
-                <th> <?php echo 'Position name' ?>            </th>
+                <th> <?php echo lang('employee_name') ?>          </th>
+                <th> <?php echo lang('office_name') ?>            </th>
+                <th> <?php echo lang('position_name') ?>            </th>
                 <th> <?php echo lang('operations'); ?>      </th>
             </tr>
         </thead>

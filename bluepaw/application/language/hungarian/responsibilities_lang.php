@@ -6,3 +6,6 @@
  * and open the template in the editor.
  */
 
+$lang['responsibility_name'] = 'Feladatkör neve';
+$lang['responsibility_title_list'] = 'Feladatkörök listája';
+$lang['responsibility_title_one'] = 'Feladatkör részletes leírása';

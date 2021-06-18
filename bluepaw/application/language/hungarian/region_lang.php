@@ -7,3 +7,5 @@
  */
 
 $lang['region_name'] = 'Régió neve';
+$lang['region_title_list'] = 'Régiók listája';
+$lang['region_title_one'] = 'Régió részletes leírása';

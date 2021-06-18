@@ -23,6 +23,7 @@ class Office extends CI_Controller{
         $this->load->model('office_model');
         $this->load->model('building_model');
         $this->lang->load('office'); 
+        $this->lang->load('building'); 
     }
     
     public function list($office_id = NULL)
@@ -39,7 +40,7 @@ class Office extends CI_Controller{
             }
             //paraméterek átadása a nézetnek
             $view_params = [
-                'title' => 'Oldal címe',
+                'title' => lang('office_title_list'),
                 'records' => $this->office_model->get_list(),
                 'errors' => $errors
             ];
@@ -63,7 +64,7 @@ class Office extends CI_Controller{
             }
             
             $view_params = [
-                'title' => 'Részletes oldal címe',
+                'title' => lang('office_title_one'),
                 'record' => $record
             ];
             
@@ -84,9 +85,9 @@ class Office extends CI_Controller{
         
         $this->load->library('form_validation');
         
-        $this->form_validation->set_rules('nev', 'Iroda Megnevezése', 'required|min_length[3]');
-        $this->form_validation->set_rules('kapacitas', 'Kapacitás', 'required');
-        $this->form_validation->set_rules('epulet', 'Épület', 'required');
+        $this->form_validation->set_rules('nev', lang('office_name'), 'required|min_length[3]');
+        $this->form_validation->set_rules('kapacitas', lang('office_capacity'), 'required');
+        $this->form_validation->set_rules('epulet', lang('building_name'), 'required');
         
         if($this->form_validation->run() == TRUE)
         {
@@ -145,9 +146,9 @@ class Office extends CI_Controller{
         
         $this->load->library('form_validation');
         
-        $this->form_validation->set_rules('nev', 'Iroda Megnevezése', 'required|min_length[3]');
-        $this->form_validation->set_rules('kapacitas', 'Kapacitás', 'required');
-        $this->form_validation->set_rules('epulet', 'Épület', 'required');
+        $this->form_validation->set_rules('nev', lang('office_name'), 'required|min_length[3]');
+        $this->form_validation->set_rules('kapacitas', lang('office_capacity'), 'required');
+        $this->form_validation->set_rules('epulet', lang('building_name'), 'required');
         
         if($this->form_validation->run() == TRUE)
         {

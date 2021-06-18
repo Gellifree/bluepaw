@@ -24,6 +24,8 @@ class Employee extends CI_Controller {
         $this->load->model('office_model');
         $this->load->model('position_model');
         $this->lang->load('employee'); 
+        $this->lang->load('office'); 
+        $this->lang->load('position'); 
     }
     
     public function list($employee_id = NULL)
@@ -40,7 +42,7 @@ class Employee extends CI_Controller {
             }
             //paraméterek átadása a nézetnek
             $view_params = [
-                'title' => 'Oldal címe',
+                'title' => lang('employee_title_list'),
                 'records' => $this->employee_model->get_list(),
                 'errors' => $errors
             ];
@@ -64,7 +66,7 @@ class Employee extends CI_Controller {
             }
             
             $view_params = [
-                'title' => 'Részletes oldal címe',
+                'title' => lang('employee_title_one'),
                 'record' => $record
             ];
             
@@ -85,9 +87,9 @@ class Employee extends CI_Controller {
         
         $this->load->library('form_validation');
         
-        $this->form_validation->set_rules('nev', 'Alkalmazott Megnevezése', 'required|min_length[3]');
-        $this->form_validation->set_rules('iroda', 'Iroda', 'required');
-        $this->form_validation->set_rules('munkakor', 'Munkakör', 'required');
+        $this->form_validation->set_rules('nev', lang('employee_name'), 'required|min_length[3]');
+        $this->form_validation->set_rules('iroda', lang('office_name'), 'required');
+        $this->form_validation->set_rules('munkakor', lang('position_name'), 'required');
         
         if($this->form_validation->run() == TRUE)
         {
@@ -152,9 +154,9 @@ class Employee extends CI_Controller {
         
         $this->load->library('form_validation');
         
-        $this->form_validation->set_rules('nev', 'Állat neve', 'required|min_length[3]');
-        $this->form_validation->set_rules('iroda', 'Iroda', 'required');
-        $this->form_validation->set_rules('munkakor', 'Munkakör', 'required');
+        $this->form_validation->set_rules('nev', lang('employee_name'), 'required|min_length[3]');
+        $this->form_validation->set_rules('iroda', lang('office_name'), 'required');
+        $this->form_validation->set_rules('munkakor', lang('position_name'), 'required');
         
         if($this->form_validation->run() == TRUE)
         {

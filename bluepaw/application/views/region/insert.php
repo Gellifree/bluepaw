@@ -11,7 +11,7 @@
     (
         ['type' => 'text', 'name' => 'nev', 'required' => 'required', 'minlength' => 2],
         set_value('nev', ''),
-        ['placeholder' => 'Régió neve']
+        ['placeholder' => lang('region_name')]
     ); 
 ?> <br/>
 
@@ -20,7 +20,7 @@
     (
         ['name'=> 'leiras'],
         set_value('leiras', ''),
-        ['placeholder' => 'Régió leírása']
+        ['placeholder' => lang('description')]
     );
 ?> <br/>
 

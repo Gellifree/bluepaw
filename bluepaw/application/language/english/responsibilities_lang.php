@@ -6,3 +6,6 @@
  * and open the template in the editor.
  */
 
+$lang['responsibility_name'] = 'Name of the responsibility';
+$lang['responsibility_title_list'] = 'List of the responsibilities';
+$lang['responsibility_title_one'] = 'Detailed description of a responsibility';

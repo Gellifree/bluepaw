@@ -6,3 +6,6 @@
  * and open the template in the editor.
  */
 
+$lang['employee_name'] = 'Name of the employee';
+$lang['employee_title_list'] = 'List of the employees';
+$lang['employee_title_one'] = 'Detailed description of an employee';

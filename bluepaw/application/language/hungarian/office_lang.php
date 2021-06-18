@@ -6,3 +6,8 @@
  * and open the template in the editor.
  */
 
+$lang['office_name'] = 'Iroda neve';
+$lang['office_title_list'] = 'Irodák listája';
+$lang['office_title_one'] = 'Iroda részletes leírása';
+
+$lang['office_capacity'] = 'Kapacitás';

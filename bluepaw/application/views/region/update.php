@@ -1,9 +1,5 @@
 <?php $this->load->view('common/bootstrap'); ?>
 
-<?php $this->load->view('common/bootstrap'); ?>
-
-
-
 
 
 <?php echo validation_errors(); ?>
@@ -16,7 +12,7 @@
     (
         ['type' => 'text', 'name' => 'nev', 'required' => 'required', 'minlength' => 2],
         set_value('nev', $record->nev),
-        ['placeholder' => 'Régió neve']
+        ['placeholder' => lang('region_name')]
     ); 
 ?> <br/>
 
@@ -24,7 +20,7 @@
     (
         ['name'=> 'leiras'],
         set_value('leiras', $record->leiras),
-        ['placeholder' => 'Régió leírása']
+        ['placeholder' => lang('description')]
     );
 ?> <br/>
 

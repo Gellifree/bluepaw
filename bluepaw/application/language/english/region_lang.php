@@ -7,4 +7,6 @@
  */
 
 $lang['region_name'] = 'Region name';
+$lang['region_title_list'] = 'List of regions';
+$lang['region_title_one'] = 'Detailed description of a region';
 

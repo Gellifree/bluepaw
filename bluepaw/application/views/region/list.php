@@ -17,7 +17,7 @@
         <thead>
             <tr>
                 <th> <?php echo lang('identification'); ?> </th>
-                <th> <?php echo lang('building_name'); ?> </th>
+                <th> <?php echo lang('region_name'); ?> </th>
                 <th> <?php echo lang('operations'); ?>  </th>
             </tr>
         </thead>

@@ -38,7 +38,7 @@ class Responsibilities extends CI_Controller{
             }
             //paraméterek átadása a nézetnek
             $view_params = [
-                'title' => 'Oldal címe',
+                'title' => lang('responsibility_title_list'),
                 'records' => $this->responsibilities_model->get_list(),
                 'errors' => $errors
             ];
@@ -62,7 +62,7 @@ class Responsibilities extends CI_Controller{
             }
             
             $view_params = [
-                'title' => 'Részletes oldal címe',
+                'title' => lang('responsiblity_title_one'),
                 'record' => $record
             ];
             
@@ -83,7 +83,7 @@ class Responsibilities extends CI_Controller{
         
         $this->load->library('form_validation');
         
-        $this->form_validation->set_rules('nev', 'Feladatkör Megnevezése', 'required|min_length[3]');
+        $this->form_validation->set_rules('nev', lang('responsibility_name'), 'required|min_length[3]');
         
         if($this->form_validation->run() == TRUE)
         {
@@ -129,7 +129,7 @@ class Responsibilities extends CI_Controller{
         
         $this->load->library('form_validation');
         
-        $this->form_validation->set_rules('nev', 'Állat neve', 'required|min_length[3]');
+        $this->form_validation->set_rules('nev', lang('responsibility_name'), 'required|min_length[3]');
         
         if($this->form_validation->run() == TRUE)
         {
