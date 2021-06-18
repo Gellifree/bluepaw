@@ -62,7 +62,7 @@ class Responsibilities extends CI_Controller{
             }
             
             $view_params = [
-                'title' => lang('responsiblity_title_one'),
+                'title' => lang('responsibility_title_one'),
                 'record' => $record
             ];
             

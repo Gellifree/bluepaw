@@ -1,5 +1,5 @@
 <?php $this->load->view('common/bootstrap'); ?>
-
+<div class = 'container p-3 my-3 border'>
 
 <?php echo form_open(); ?>
 
@@ -8,7 +8,7 @@
     (
         ['type' => 'text', 'name' => 'nev', 'required' => 'required', 'minlength' => 2],
         set_value('nev', ''),
-        ['placeholder' => lang('region_name')]
+        ['placeholder' => lang('region_name'), 'class'=> 'form-control']
     ); 
 ?> <br/>
 
@@ -17,15 +17,17 @@
     (
         ['name'=> 'leiras'],
         set_value('leiras', ''),
-        ['placeholder' => lang('description')]
+        ['placeholder' => lang('description'), 'class'=> 'form-control']
     );
 ?> <br/>
 
 <?php echo form_button
     (
         ['type' => 'submit', 'name' => 'mentes'],
-        lang('save')
+        lang('save'),
+        ['class' => 'btn btn-primary']
     ); 
 ?>
 
 <?php echo form_close(); ?>
+</div>

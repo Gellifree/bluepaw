@@ -1,19 +1,22 @@
 <?php $this->load->view('common/bootstrap'); ?>
-
+<div class = 'container p-3 my-3 border'>
 <h1> <?= $title ?> </h1>
+</div>
 
+<div class="alert-danger container">
 <?php if(!empty($errors)): ?>
     <?php foreach($errors as $error): ?>
         <p><?=$error?></p>
     <?php endforeach; ?>
 <?php endif?>
+</div>
 
 <!-- A rekordlistát csak akkor ha nem üres -->
-<?php echo anchor(base_url('dog/insert'), lang('add')); ?>
+<div class="container p-3 my-3 border">
 <?php if($records == null || empty($records)): ?>
 <p> <?php echo lang('notfound') ?> </p>
 <?php else: ?>
-    <table>
+    <table class="table table-hover">
         <thead>
             <tr>
                 <th> <?php echo lang('identification'); ?>  </th>
@@ -29,9 +32,9 @@
                 <td> <?=$record->nev?> </td>
                 <td> <?=$record->epulet_nev?> </td>
                 <td>
-                    <?php echo anchor(base_url('dog/list/'.$record->id), lang('details')); ?>
-                    <?php echo anchor(base_url('dog/delete/'.$record->id), lang('delete')); ?>
-                    <?php echo anchor(base_url('dog/update/'.$record->id), lang('edit')); ?>
+                    <?php echo anchor(base_url('dog/list/'.$record->id), '<i class="fas fa-info-circle"> </i>'); ?>
+                    <?php echo anchor(base_url('dog/delete/'.$record->id), '<i class="fas fa-trash"> </i>'); ?>
+                    <?php echo anchor(base_url('dog/update/'.$record->id), '<i class="fas fa-edit"> </i>'); ?>
                 </td>
             </tr>
         <?php endforeach; ?>
@@ -40,3 +43,5 @@
 
     <p> <?php echo lang('number_of_records') ?> <?=count($records)?></p>
 <?php endif; ?>
+<?php echo anchor(base_url('dog/insert'), lang('add'), ['class' => 'btn btn-primary']); ?>
+</div>
