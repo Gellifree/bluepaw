@@ -21,8 +21,8 @@ $lang['error_csrf'] = 'This form post did not pass our security checks.';
 // Login
 $lang['login_heading']         = 'Bejelentkezés';
 $lang['login_subheading']      = 'Az alábbi űrlapon jelentkezzen be e-mail címével/felhasználónevével és jelszavával.';
-$lang['login_identity_label']  = 'E-mail/Felhasználónév:';
-$lang['login_password_label']  = 'Jelszó:';
+$lang['login_identity_label']  = 'Felhasználónév';
+$lang['login_password_label']  = 'Jelszó';
 $lang['login_remember_label']  = 'Emlékezz rám:';
 $lang['login_submit_btn']      = 'Belépés';
 $lang['login_forgot_password'] = 'Elfelejtette jelszavát?';

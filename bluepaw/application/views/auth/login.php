@@ -6,9 +6,9 @@
 
 </div>
 
-<div class="container">
-    <div class="alert-primary conitainer" id="infoMessage"><?php echo $message;?></div>
-</div>
+
+<div class="alert-primary container" id="infoMessage"><?php echo $message;?></div>
+
 
 
 
@@ -16,21 +16,20 @@
 <?php echo form_open("auth/login");?>
 
   <p>
-    <!-- <?php echo lang('login_identity_label', 'identity');?> -->
-    <?php echo form_input($identity, '',['Placeholder' => 'Username', 'class' => 'form-control']);?>
+    <?php echo form_input(
+            $identity,
+            '',
+            ['Placeholder' => lang('login_identity_label'), 'class' => 'form-control']);
+    ?>
   </p>
 
   <p>
-    <!--<?php echo lang('login_password_label', 'password');?>-->
-    <?php echo form_input($password, '',['Placeholder' => 'Password', 'class' => 'form-control']);?>
+    <?php echo form_input(
+            $password,
+            '',
+            ['Placeholder' => lang('login_password_label'), 'class' => 'form-control']);
+    ?>
   </p>
-
-  <!--
-  <p>
-    <?php echo lang('login_remember_label', 'remember');?>
-    <?php echo form_checkbox('remember', '1', FALSE, 'id="remember"');?>
-  </p>
--->
 
   <p><?php echo form_submit('submit', lang('login_submit_btn'), ['class' => 'btn btn-warning'] );?></p>
 

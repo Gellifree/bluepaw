@@ -1,11 +1,19 @@
 <?php $this->load->view('common/bootstrap'); ?>
 
+
+<div class = 'container p-3 my-3 border'>
 <h1><?php echo lang('index_heading');?></h1>
 <p><?php echo lang('index_subheading');?></p>
+</div>
 
-<div id="infoMessage"><?php echo $message;?></div>
 
-<table cellpadding=0 cellspacing=10>
+
+<div id="infoMessage" class="alert-primary container"><?php echo $message;?></div>
+
+
+
+<div class="container border p-3 my-3">
+    <table  class="table table-hover table-bordered">
 	<tr>
 		<th><?php echo lang('index_fname_th');?></th>
 		<th><?php echo lang('index_lname_th');?></th>
@@ -31,3 +39,4 @@
 </table>
 
 <p><?php echo anchor('auth/create_user', lang('index_create_user_link'))?> | <?php echo anchor('auth/create_group', lang('index_create_group_link'))?></p>
+</div>
