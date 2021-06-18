@@ -10,11 +10,13 @@
 ?>
 <br/>
 
-
+<?php echo form_error('iroda'); ?>
 <?php echo form_dropdown(
         ['name' => 'iroda'],
         $offices);
 ?>
+
+<?php echo form_error('munkakor'); ?>
 <?php echo form_dropdown(
         ['name' => 'munkakor'],
         $positions);

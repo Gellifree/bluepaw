@@ -19,7 +19,7 @@
 ?>
 <br/>
 
-
+<?php echo form_error('epulet'); ?>
 <?php echo form_dropdown(
         ['name' => 'epulet'],
         $epuletek);

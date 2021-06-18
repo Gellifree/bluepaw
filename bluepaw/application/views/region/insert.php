@@ -1,9 +1,6 @@
 <?php $this->load->view('common/bootstrap'); ?>
 
 
-<?php echo validation_errors(); ?>
-
-
 <?php echo form_open(); ?>
 
 <?php echo form_error('nev') ?>

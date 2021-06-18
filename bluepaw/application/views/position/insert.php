@@ -18,6 +18,7 @@
 ?>
 <br/>
 
+<?php echo form_error('fizetes'); ?>
 <?php echo form_input(
         ['type' => 'number', 'name' => 'fizetes'],
         set_value('fizetes', ''),

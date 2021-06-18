@@ -2,6 +2,7 @@
 
 <?php echo form_open(); ?>
 
+<?php echo form_error('nev'); ?>
 <?php echo form_input(
         ['type' => 'text', 'name' => 'nev'],
         set_value('nev', $record->nev),
