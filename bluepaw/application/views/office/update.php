@@ -22,7 +22,9 @@
 <?php echo form_error('epulet'); ?>
 <?php echo form_dropdown(
         ['name' => 'epulet', 'class' => 'btn btn-secondary'],
-        $epuletek);
+        $epuletek,
+        [$record->epulet]
+        );
 ?>
 
 <?php echo form_button(

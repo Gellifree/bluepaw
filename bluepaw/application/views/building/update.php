@@ -21,7 +21,9 @@
 <?php echo form_error('telep'); ?>
 <?php echo form_dropdown(
         ['name' => 'regio', 'class' => 'btn btn-secondary'],
-        $regiok);
+        $regiok,
+        [$record->regio]
+        );
 ?>
 
 

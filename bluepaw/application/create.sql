@@ -378,3 +378,5 @@ create table rendelkezik(
     foreign key (feladatkor) references feladatkor(id) on delete cascade,
     foreign key (munkakor) references munkakor(id) on delete cascade
 );
+
+alter table kutya modify nem varchar(20);

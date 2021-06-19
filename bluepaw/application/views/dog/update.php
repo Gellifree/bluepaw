@@ -21,12 +21,16 @@
 <?php echo form_error('epulet'); ?>
 <?php echo form_dropdown(
         ['name' => 'epulet', 'class' => 'btn btn-secondary'],
-        $buildings);
+        $buildings,
+        [$record->epulet]
+        );
 ?>
 
 <?php echo form_dropdown(
         ['name' => 'nem', 'class' => 'btn btn-secondary'],
-        ['Fiú'=>'Fiú','Lány' => 'Lány']);
+        ['Fiú'=>'Fiú','Lány' => 'Lány'],
+        [$record->nem]
+        );
 ?>
 
 <?php echo form_button(

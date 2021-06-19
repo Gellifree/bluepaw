@@ -14,12 +14,16 @@
 <?php echo form_error('iroda'); ?>
 <?php echo form_dropdown(
         ['name' => 'iroda', 'class' => 'btn btn-secondary'],
-        $offices);
+        $offices,
+        [$record->iroda]
+        );
 ?>
 <?php echo form_error('munkakor'); ?>
 <?php echo form_dropdown(
         ['name' => 'munkakor', 'class' => 'btn btn-secondary'],
-        $positions);
+        $positions,
+        [$record->munkakor]
+        );
 ?>
 
 
