@@ -11,7 +11,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </head>
 <body>
 
-        <div class="container border pt-2 my-3">
+        <div class="container border pt-2 my-3 shadow-sm">
             <h5>  <?php echo lang('welcome').' '; echo $user->first_name; echo ' '.$user->last_name ?>! </h5>  
         </div>
     <div id="container" class="container pt-3 my-3">
@@ -20,7 +20,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         
         <div class="row">
             <div class="col-">
-                <div class="card shadow bg-light" style="width: 150px">
+                <div class="card shadow-sm bg-light" style="width: 150px">
                     <img src="/bluepaw/public/img/profile_rect.png" class="card-img-top"/>
                     <div class="card-body ">
                         <h6 class="card-title"><?php echo $user->first_name; echo ' '.$user->last_name ?></h6>
@@ -33,10 +33,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           
             <div class="col">
                 
-                <ul class="list-group ">
-                    <li class="list-group-item list-group-item-info"> <?php echo lang('login_identity_label').': '.$user->username; ?> </li>
-                    <li class="list-group-item list-group-item-primary"> <?php echo lang('index_email_th').': '.$user->email; ?></li>
-                    <li class="list-group-item list-group-item-info"> <?php echo lang('create_user_company_label').' '.$user->company; ?></li>
+                <ul class="list-group shadow-sm">
+                    <li class="list-group-item list-group-item-light"> <?php echo '<b>'.lang('login_identity_label').':</b> '.$user->username; ?> </li>
+                    <li class="list-group-item list-group-item-light"> <?php echo '<b>'.lang('index_email_th').':</b> '.$user->email; ?></li>
+                    <li class="list-group-item list-group-item-light"> <?php echo '<b>'.lang('create_user_company_label').'</b> '.$user->company; ?></li>
                 </ul>
 
             </div>  

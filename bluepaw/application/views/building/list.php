@@ -3,7 +3,7 @@
 
 
 <title> <?php echo lang('building_title_list') ?> </title>
-<div class = 'container p-3 my-3 border'>
+<div class = 'container p-3 my-3 border shadow-sm'>
 <h1> <?= $title ?> </h1>
 </div>
 <div class="alert-danger container">
@@ -15,7 +15,7 @@
 </div>
 
 
-<div class="container p-3 my-3 border">
+<div class="container p-3 my-3 border shadow-sm">
 <!-- A rekordlistát csak akkor ha nem üres -->
 
 
@@ -24,11 +24,11 @@
 <p> <?php echo lang('notfound') ?> </p>
 <?php else: ?>
 <table class="table table-hover">
-        <thead>
+        <thead class="thead-dark">
             <tr>
                 <th> <?php echo lang('building_name') ?>          </th>
                 <th> <?php echo lang('region_name') ?>            </th>
-                <th> <?php echo lang('operations'); ?>      </th>
+                <th class="text-right"> <?php echo lang('operations'); ?>      </th>
             </tr>
         </thead>
         <tbody>
@@ -36,7 +36,7 @@
             <tr>    
                 <td> <?=$record->nev?> </td>
                 <td> <?=$record->regio_nev?> </td>
-                <td>
+                <td class="text-right">
                     <?php echo anchor(base_url('building/list/'.$record->id), '<i class="fas fa-info-circle"> </i>'); ?>
                     <?php echo anchor(base_url('building/delete/'.$record->id), '<i class="fas fa-trash"> </i>'); ?>
                     <?php echo anchor(base_url('building/update/'.$record->id), '<i class="fas fa-edit"> </i>'); ?>
@@ -45,7 +45,7 @@
         <?php endforeach; ?>
         </tbody>
     </table>
-    <p> <?php echo lang('number_of_records') ?> <?=count($records)?></p>
+    <p class="text-right"> <?php echo lang('number_of_records') ?> <?=count($records)?></p>
     
 <?php endif; ?>
 <?php echo anchor(base_url('building/insert'), lang('add'), ['class' => 'btn btn-primary']); ?>
