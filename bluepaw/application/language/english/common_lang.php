@@ -32,3 +32,16 @@ $lang['insert_error'] = 'Insertion was not succesfull';
 $lang['permission_error_insert'] = 'You dont have permission to add to this list.';
 $lang['permission_error_modify'] = 'You dont have permission to modify in this list.';
 $lang['permission_error_delete'] = 'You dont have permission to delete from this list.';
+
+
+$lang['menu_main_page'] = 'Main page';
+$lang['menu_building_page'] = 'Buildings';
+$lang['menu_dog_page'] = 'Dogs';
+$lang['menu_employee_page'] = 'Employees';
+$lang['menu_office_page'] = 'Offices';
+$lang['menu_position_page'] = 'Positions';
+$lang['menu_region_page'] = 'Regions';
+$lang['menu_responsibilities_page'] = 'Responsibilities';
+
+$lang['logout'] = 'Log out';
+$lang['welcome'] = 'Welcome';

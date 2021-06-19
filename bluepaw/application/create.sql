@@ -293,3 +293,88 @@ alter table kutya modify nem varchar(20);
 delete from kutya where nem='0' or nem='1';
 insert into kutya(nev, leiras, nem, epulet) values ('Csöpi', 'Csöpi egy kutya', 'Fiú', 3);
 insert into kutya(nev, leiras, nem, epulet) values ('Röfi', 'Röfi is egy kutya', 'Lány', 3);
+
+
+
+-- Az adatbázis idegen kulcsaihoz, nem vettük fel a megfelelő törlési megszorítást, ezért ezeket vegyük fel.
+
+
+/* Módosított adatbázis tábláinak létrehozása */
+
+-- Régió tábla létrehozása
+
+create table regio(
+    id int primary key auto_increment,
+    nev varchar(50) not null,
+    leiras text
+);
+
+-- Épület tábla
+
+create table epulet(
+    id int primary key auto_increment,
+    nev varchar(50) not null,
+    leiras text,
+    regio int,
+    foreign key (regio) references regio(id) on delete cascade
+);
+
+-- Iroda
+
+create table iroda(
+    id int primary key auto_increment,
+    nev varchar(50) not null,
+    kapacitas int not null,
+    epulet int,
+    foreign key (epulet) references epulet(id) on delete cascade
+);
+
+-- Kutya
+
+create table kutya(
+    id int primary key auto_increment,
+    nev varchar(50) not null,
+    leiras text,
+    nem tinyint,
+    szul_ev date,
+    kep_eleres varchar(1024),
+    epulet int,
+    foreign key (epulet) references epulet(id) on delete cascade
+);
+
+-- Munkakör
+
+create table munkakor(
+    id int primary key auto_increment,
+    nev varchar(50) not null,
+    leiras text,
+    fizetes int
+);
+
+-- Alkalmazott
+
+create table alkalmazott(
+    id int primary key auto_increment,
+    nev varchar(50) not null,
+    iroda int,
+    munkakor int,
+    foreign key (iroda) references iroda(id) on delete cascade,
+    foreign key (munkakor) references munkakor(id) on delete cascade
+);
+
+-- Feladatkor
+
+create table feladatkor(
+    id int primary key auto_increment,
+    nev varchar(50) not null,
+    leiras text
+);
+
+-- Rendelkezik kapcsolótábla
+
+create table rendelkezik(
+    feladatkor int,
+    munkakor int,
+    foreign key (feladatkor) references feladatkor(id) on delete cascade,
+    foreign key (munkakor) references munkakor(id) on delete cascade
+);

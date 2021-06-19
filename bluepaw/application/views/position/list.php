@@ -33,7 +33,7 @@
         <?php foreach ($records as $record): ?>
             <tr>    
                 <td> <?=$record->id?> </td>
-                <td> <?=$record->nev?> </td>
+                <td> <?php echo anchor(base_url('has/list/'.$record->id), $record->nev); ?> </td>
                 <td> <?=$record->fizetes?> </td>
                 <td>
                     <?php echo anchor(base_url('position/list/'.$record->id), '<i class="fas fa-info-circle"> </i>'); ?>

@@ -29,3 +29,15 @@ $lang['insert_error'] = 'Sikertelen beszúrás';
 $lang['permission_error_insert'] = 'Nincs jogosultságod hozzáadni ehez a listához.';
 $lang['permission_error_modify'] = 'Nincs jogosultságod módosítani ebben a listában.';
 $lang['permission_error_delete'] = 'Nincs jogosultságod törölni ebből a listából.';
+
+$lang['menu_main_page'] = 'Főoldal';
+$lang['menu_building_page'] = 'Épületek';
+$lang['menu_dog_page'] = 'Kutyák';
+$lang['menu_employee_page'] = 'Alkalmazottak';
+$lang['menu_office_page'] = 'Irodák';
+$lang['menu_position_page'] = 'Munkakörök';
+$lang['menu_region_page'] = 'Régiók';
+$lang['menu_responsibilities_page'] = 'Feladatok';
+
+$lang['logout'] = 'Kijelentkezés';
+$lang['welcome'] = 'Üdvözlünk';
