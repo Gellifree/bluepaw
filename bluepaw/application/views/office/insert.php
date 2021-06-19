@@ -5,7 +5,7 @@
 <?php echo form_error('nev'); ?>
 <?php echo form_open(); ?>
 <?php echo form_input(
-        ['type' => 'text', 'name' => 'nev'],
+        ['type' => 'text', 'name' => 'nev', 'required' => 'required', 'minlength' => '3'],
         set_value('nev', ''),
         ['placeholder' => lang('office_name'), 'class'=> 'form-control']);
 ?>
@@ -13,7 +13,7 @@
 
 <?php echo form_error('kapacitas'); ?>
 <?php echo form_input(
-        ['type' => 'text', 'name' => 'kapacitas'],
+        ['type' => 'number', 'name' => 'kapacitas', 'required' => 'required'],
         set_value('kapacitas', ''),
         ['placeholder' => lang('office_capacity'), 'class'=> 'form-control']);
 ?>

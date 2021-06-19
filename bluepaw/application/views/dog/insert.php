@@ -4,7 +4,7 @@
  
 <?php echo form_error('nev'); ?>
 <?php echo form_input(
-        ['type' => 'text', 'name' => 'nev'],
+        ['type' => 'text', 'name' => 'nev', 'required' => 'required', 'minlength' => '3'],
         set_value('nev', ''),
         ['placeholder' => lang('dog_name'), 'class'=> 'form-control']);
 ?>

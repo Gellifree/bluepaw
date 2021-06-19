@@ -86,7 +86,7 @@ class Office extends CI_Controller{
         $this->load->library('form_validation');
         
         $this->form_validation->set_rules('nev', lang('office_name'), 'required|min_length[3]');
-        $this->form_validation->set_rules('kapacitas', lang('office_capacity'), 'required');
+        $this->form_validation->set_rules('kapacitas', lang('office_capacity'), 'required|greater_than[0]');
         $this->form_validation->set_rules('epulet', lang('building_name'), 'required');
         
         if($this->form_validation->run() == TRUE)

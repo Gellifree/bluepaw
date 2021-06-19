@@ -6,7 +6,7 @@
 <?php echo form_error('nev') ?>
 <?php echo form_input
     (
-        ['type' => 'text', 'name' => 'nev', 'required' => 'required', 'minlength' => 2],
+        ['type' => 'text', 'name' => 'nev', 'required' => 'required', 'minlength' => '3'],
         set_value('nev', ''),
         ['placeholder' => lang('region_name'), 'class'=> 'form-control']
     ); 

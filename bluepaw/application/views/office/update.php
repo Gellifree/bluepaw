@@ -5,15 +5,15 @@
 <?php echo form_error('nev'); ?>
 
 <?php echo form_input(
-        ['type' => 'text', 'name' => 'nev'],
+        ['type' => 'text', 'name' => 'nev', 'required' => 'required', 'minlength' => '3'],
         set_value('nev', $record->nev),
         ['placeholder' => lang('office_name'), 'class'=> 'form-control']);
 ?>
 <br/>
 
-<?php echo form_error('leiras'); ?>
+<?php echo form_error('kapacitas'); ?>
 <?php echo form_input(
-        ['type' => 'text', 'name' => 'kapacitas'],
+        ['type' => 'text', 'name' => 'kapacitas', 'required' => 'required'],
         set_value('kapacitas', $record->kapacitas),
         ['placeholder' => lang('office_capacity'), 'class'=> 'form-control']);
 ?>

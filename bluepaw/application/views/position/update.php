@@ -3,7 +3,7 @@
 <?php echo form_open(); ?>
 
 <?php echo form_input(
-        ['type' => 'text', 'name' => 'nev'],
+        ['type' => 'text', 'name' => 'nev', 'required' => 'required', 'minlength' => '3'],
         set_value('nev', $record->nev),
         ['placeholder' => lang('position_name'), 'class'=> 'form-control']);
 ?>
@@ -19,7 +19,7 @@
 
 <?php echo form_error('fizetes'); ?>
 <?php echo form_input(
-        ['type' => 'number', 'name' => 'fizetes'],
+        ['type' => 'number', 'name' => 'fizetes', 'required' => 'required'],
         set_value('fizetes', $record->fizetes),
         ['placeholder' => lang('position_payment'), 'class'=> 'form-control']);
 ?>

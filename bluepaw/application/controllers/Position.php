@@ -84,7 +84,7 @@ class Position extends CI_Controller{
         $this->load->library('form_validation');
         
         $this->form_validation->set_rules('nev', lang('position_name'), 'required|min_length[3]');
-        $this->form_validation->set_rules('fizetes', lang('position_payment'), 'required');
+        $this->form_validation->set_rules('fizetes', lang('position_payment'), 'required|greater_than[0]');
         
         if($this->form_validation->run() == TRUE)
         {
