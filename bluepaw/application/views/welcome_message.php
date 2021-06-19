@@ -7,7 +7,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <html lang="hu">
 <head>
 	<meta charset="utf-8">
-	<title>Welcome to CodeIgniter</title>
+	<title> <?php echo lang('welcome') ?></title>
 </head>
 <body>
 

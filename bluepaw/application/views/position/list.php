@@ -1,4 +1,8 @@
 <?php $this->load->view('common/bootstrap'); ?>
+
+<title> <?php echo lang('position_title_list') ?> </title>
+
+
 <div class = 'container p-3 my-3 border'>
 <h1> <?= $title ?> </h1>
 </div>
@@ -23,7 +27,6 @@
 <table class="table table-hover">
         <thead>
             <tr>
-                <th> <?php echo lang('identification'); ?>  </th>
                 <th> <?php echo lang('position_name') ?>          </th>
                 <th> <?php echo lang('position_payment') ?>            </th>
                 <th> <?php echo lang('operations'); ?>      </th>
@@ -32,7 +35,6 @@
         <tbody>
         <?php foreach ($records as $record): ?>
             <tr>    
-                <td> <?=$record->id?> </td>
                 <td> <?php echo anchor(base_url('has/list/'.$record->id), $record->nev); ?> </td>
                 <td> <?=$record->fizetes?> </td>
                 <td>

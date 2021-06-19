@@ -1,4 +1,5 @@
 <?php $this->load->view('common/bootstrap'); ?>
+<title> <?php echo lang('add') ?> </title>
 <div class = 'container p-3 my-3 border'>
 <?php echo form_open(); ?>
 

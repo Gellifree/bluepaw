@@ -1,4 +1,6 @@
 <?php $this->load->view('common/bootstrap'); ?>
+
+<title> <?php echo lang('building_title_one') ?> </title>
 <div class = 'container p-3 my-3 border'>
 <h3><?=$title ?></h3>
 </div>

@@ -10,7 +10,7 @@
 $lang['operations'] = 'Operations';
 $lang['save'] = 'Save';
 $lang['delete'] = 'Delete';
-$lang['edit'] = 'Modify';
+$lang['edit'] = 'Edit record';
 $lang['details'] = 'Show details';
 $lang['notfound'] = 'No items have been added yet.';
 $lang['add'] = 'Add new item';
