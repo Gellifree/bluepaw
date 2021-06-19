@@ -24,7 +24,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <img src="/bluepaw/public/img/profile_rect.png" class="card-img-top"/>
                     <div class="card-body ">
                         <h6 class="card-title"><?php echo $user->first_name; echo ' '.$user->last_name ?></h6>
-                        <p class="card-text"></p>
+                        <!-- <p class="card-text"></p> -->
                         <!-- <a href="#" class="btn btn-warning">Gomb</a> -->
                     </div>
                 </div>

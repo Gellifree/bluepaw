@@ -19,7 +19,7 @@
     <table class="table table-hover">
         <thead>
             <tr>
-                <th> <img src="/bluepaw/public/img/paw_icon.png" width="20px"/> <?php echo lang('identification'); ?>  </th>
+                <th>  <?php echo lang('identification'); ?>  </th>
                 <th> <?php echo lang('dog_name') ?>          </th>
                 <th> <?php echo lang('building_name') ?>            </th>
                 <th> <?php echo lang('operations'); ?>      </th>
@@ -43,5 +43,16 @@
 
     <p> <?php echo lang('number_of_records') ?> <?=count($records)?></p>
 <?php endif; ?>
+   
+    
+    
+    
+      <?php if($this->ion_auth->is_admin()): ?>
+      <?php
+        $this->load->view('upload/upload_form');
+      ?> <br/> <br/>
+      <?php endif; ?>
+
+
 <?php echo anchor(base_url('dog/insert'), lang('add'), ['class' => 'btn btn-primary']); ?>
 </div>

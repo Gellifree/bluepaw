@@ -9,6 +9,14 @@
 <p><?=$record->id?></p>
 <h4> <?php echo lang('dog_name'); ?> </h4>
 <p><?=$record->nev?></p>
+
+<?php if($record->kep_eleres == 'NULL' ): ?>
+<?php echo '<img src="/bluepaw/public/img/dog_rect.png" ?>'; ?>
+<?php else: ?>
+<?php echo '<img src='.'"/'.$record->kep_eleres.'"'.' width="150px"/>' ?>
+
+<?php endif ?>
+
 <h4> <?php echo lang('description'); ?> </h4>
 <p><?=($record->leiras == NULL ? lang('no_description_found') : $record->leiras)?></p>
 
@@ -20,7 +28,12 @@
 
 
 <h4> <?php echo lang('image_path'); ?> </h4>
-<p><?=($record->kep_eleres == NULL ? lang('no_image_added') : $record->kep_eleres)?></p>
+<p><?=($record->kep_eleres == 'NULL' ? lang('no_image_added') : $record->kep_eleres)?></p>
+
+
+
+<br/>
+
 
 
 <?php echo anchor(base_url('dog/list'), lang('back_to_list'), ['class' => 'btn btn-primary']); ?>

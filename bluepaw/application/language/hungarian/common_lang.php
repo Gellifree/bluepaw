@@ -29,6 +29,8 @@ $lang['insert_error'] = 'Sikertelen beszúrás';
 $lang['permission_error_insert'] = 'Nincs jogosultságod hozzáadni ehez a listához.';
 $lang['permission_error_modify'] = 'Nincs jogosultságod módosítani ebben a listában.';
 $lang['permission_error_delete'] = 'Nincs jogosultságod törölni ebből a listából.';
+$lang['permission_error_upload'] = 'Nincs jogosultságod képek feltöltéséhez.';
+
 
 $lang['menu_main_page'] = 'Főoldal';
 $lang['menu_building_page'] = 'Épületek';

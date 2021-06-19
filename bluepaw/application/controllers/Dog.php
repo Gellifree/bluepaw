@@ -28,6 +28,7 @@ class Dog extends CI_Controller{
     
     public function list($dog_id = NULL)
     {
+        $this->load->helper(array('form'));
         if($dog_id == NULL)
         {
             //listázunk
@@ -107,8 +108,23 @@ class Dog extends CI_Controller{
                 $buildings[$item->id] = $item->nev;
             }
         
+            
+            $this->load->helper('directory');
+            $images = directory_map('./public/dogs');
+            $images_path = [];
+            
+            $images_path['NULL'] = 'Nincs kép';
+            foreach ($images as $key => $value)
+            {
+                $key = 'bluepaw/public/dogs/'.$value;
+                $images_path[$key] = $value;
+            }
+            
+            
+            
             $view_params = [
-                'buildings' => $buildings
+                'buildings' => $buildings,
+                'images' => $images_path
             ];
     
             $this->load->view('dog/insert', $view_params);
@@ -175,11 +191,24 @@ class Dog extends CI_Controller{
             {
                 $buildings[$item->id] = $item->nev;
             }
-       
+            
+            
+            $this->load->helper('directory');
+            $images = directory_map('./public/dogs');
+            $images_path = [];
+            
+            $images_path['NULL'] = 'Nincs kép';
+            foreach ($images as $key => $value)
+            {
+                $key = 'bluepaw/public/dogs/'.$value;
+                $images_path[$key] = $value;
+            }
+            
             
             $view_params = [
                 'record' => $record,
-                'buildings' => $buildings
+                'buildings' => $buildings,
+                'images' => $images_path
             ];
         
             $this->load->helper('form');

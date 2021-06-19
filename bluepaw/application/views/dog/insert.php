@@ -29,10 +29,24 @@
         ['Fiú'=>'Fiú','Lány' => 'Lány']);
 ?>
 
+<?php echo form_dropdown(
+        ['name' => 'kep_eleres', 'class' => 'btn btn-secondary'],
+        $images
+        );
+?>
+
+
+
 <?php echo form_button(
         ['type' => 'submit', 'name' => 'submit'],
         lang('save'),
         ['class' => 'btn btn-primary']);
 ?>
+
 <?php echo form_close(); ?>
+
+
+
+
+
 </div>
