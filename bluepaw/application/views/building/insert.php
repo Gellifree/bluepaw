@@ -1,7 +1,14 @@
 <?php $this->load->view('common/bootstrap'); ?>
 <title> <?php echo lang('add') ?> </title>
 
-<div class = 'container p-3 my-3 border'>
+
+<div class="container bg-dark p-3 text-white my-3 shadow-sm rounded">
+    <?php echo lang('add') ?>
+</div>
+<div class = 'container  border p-3'>
+
+
+    
 <?php echo form_open(); ?>
 
 <?php echo form_error('nev'); ?>
@@ -29,7 +36,7 @@
 <?php echo form_button(
         ['type' => 'submit', 'name' => 'submit'],
         lang('save'),
-        ['class'=>'btn btn-warning']);
+        ['class'=>'btn btn-warning float-right']);
 ?>
 <?php echo form_close(); ?>
 </div>

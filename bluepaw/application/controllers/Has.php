@@ -16,6 +16,8 @@ class Has extends CI_Controller{
         parent::__construct();
         $this->load->model('has_model');
         $this->load->model('position_model');
+        
+        $this->lang->load('responsibilities');
     }
     
     public function list($has_id = NULL)

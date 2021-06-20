@@ -1,5 +1,10 @@
 <?php $this->load->view('common/bootstrap'); ?>
 <title> <?php echo lang('edit') ?> </title>
+
+<div class="container bg-dark p-3 text-white my-3 shadow-sm rounded">
+    <?php echo lang('edit') ?>
+</div>
+
 <div class = 'container p-3 my-3 border'>
 <?php echo form_open(); ?>
 
@@ -32,7 +37,7 @@
 <?php echo form_button(
         ['type' => 'submit', 'name' => 'submit'],
         lang('save'),
-        ['class' => 'btn btn-primary']
+        ['class' => 'btn btn-warning float-right']
         );
 ?>
 <?php echo form_close(); ?>

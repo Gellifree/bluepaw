@@ -7,6 +7,11 @@ class Welcome extends CI_Controller {
             parent::__construct();
             
             $this->lang->load('auth');
+            
+            if(!$this->ion_auth->logged_in())
+            {
+                redirect(base_url('auth'));
+            }
         }
 	/**
 	 * Index Page for this controller.

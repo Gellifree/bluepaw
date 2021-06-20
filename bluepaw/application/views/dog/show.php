@@ -2,7 +2,7 @@
 
 
 <title> <?php echo lang('dog_title_one') ?> </title>
-<div class = 'container p-2 my-3 border shadow-sm'>
+<div class = 'container p-2 my-3 border shadow text-white bg-dark rounded'>
 <h3><?=$title ?></h3>
 </div>
 
@@ -60,7 +60,7 @@
             <div class="card shadow-sm bg-light m-0 p-3 ">
             <h4 class="card-title"> <?php echo lang('description'); ?> </h4>
             <p class="card-text"><?=($record->leiras == NULL ? lang('no_description_found') : $record->leiras)?></p>
-            <?php echo anchor(base_url('dog/update/'.$record->id), lang('edit'), ['class' => 'btn btn-info']); ?>
+            <?php echo anchor(base_url('dog/update/'.$record->id), lang('edit'), ['class' => 'btn btn-warning']); ?>
             </div>
         </div>
 

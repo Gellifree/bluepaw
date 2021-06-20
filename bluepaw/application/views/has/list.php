@@ -5,6 +5,11 @@
 <div class = 'container p-3 my-3 border shadow-sm'>
 <h1> <?= $title ?> </h1>
 </div>
+
+<div class="container bg-dark p-3 text-white my-3 shadow-sm rounded">
+    <?php echo lang('responsibility_title_list') ?>
+</div>
+
 <div class="alert-danger container">
 <?php if(!empty($errors)): ?>
     <?php foreach($errors as $error): ?>
