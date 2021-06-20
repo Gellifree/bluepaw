@@ -39,6 +39,9 @@
             <div class="card shadow-sm bg-light m-0 p-3 ">
             <?php echo anchor(base_url('employee/update/'.$record->id), lang('edit'), ['class' => 'btn btn-warning']); ?>
             </div>
+            
+            <img src="/bluepaw/public/img/secondary_logo.png" width="180px" class="mx-auto d-block m-3" style="-webkit-filter: grayscale(100%); opacity: 50%;"/>
+
         </div>
 
     </div>

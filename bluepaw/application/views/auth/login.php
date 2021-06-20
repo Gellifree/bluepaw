@@ -1,5 +1,5 @@
 <?php $this->load->view('common/bootstrap'); ?>
-<div class = 'container p-3 my-3 border'>
+<div class = 'container p-3 my-3 border bg-dark text-white'>
 <h3><?php echo lang('login_heading');?></h3>
 <p><?php echo lang('login_subheading');?></p>
 
@@ -12,7 +12,7 @@
 
 
 
-<div class="container p-3 my-3 bg-dark text-white">
+<div class="container p-3 my-3 bg-light shadow-sm ">
 <?php echo form_open("auth/login");?>
 
   <p>
@@ -38,3 +38,5 @@
 
   <p><a class='font-weight-light' href="forgot_password"><?php echo lang('login_forgot_password');?></a></p>
 </div>
+
+<img src="/bluepaw/public/img/secondary_logo.png" width="180px" class="mx-auto d-block m-3" style="-webkit-filter: grayscale(100%); opacity: 50%;"/>

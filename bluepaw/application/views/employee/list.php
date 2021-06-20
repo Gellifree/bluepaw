@@ -51,3 +51,4 @@
 <?php endif; ?>
     <?php echo anchor(base_url('employee/insert'), lang('add'), ['class' => 'btn btn-primary']); ?>
 </div>
+<img src="/bluepaw/public/img/secondary_logo.png" width="180px" class="mx-auto d-block m-3" style="-webkit-filter: grayscale(100%); opacity: 50%;"/>
