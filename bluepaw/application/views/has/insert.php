@@ -1,5 +1,7 @@
 <?php $this->load->view('common/bootstrap'); ?>
 
+<title> <?php echo lang('add') ?> </title>
+
 <div class="container bg-dark p-3 text-white my-3 shadow-sm rounded">
     <?php echo lang('add') ?>
 </div>

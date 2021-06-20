@@ -43,3 +43,9 @@ $lang['menu_responsibilities_page'] = 'Feladatok';
 
 $lang['logout'] = 'Kijelentkezés';
 $lang['welcome'] = 'Üdvözlünk';
+
+$lang['upload_image'] = 'Kép feltöltése';
+$lang['choose_image'] = 'Kép kiválasztása';
+
+
+$lang['has_title_list'] = 'Pozícióhoz tartozó feladatkörök';

@@ -47,3 +47,7 @@ $lang['menu_responsibilities_page'] = 'Responsibilities';
 $lang['logout'] = 'Log out';
 $lang['welcome'] = 'Welcome';
 
+$lang['upload_image'] = 'Upload image';
+$lang['choose_image'] = 'Choose image';
+
+$lang['has_title_list'] = 'Responsibilities for the position';

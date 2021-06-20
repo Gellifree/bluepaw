@@ -11,7 +11,7 @@
         <div class="col-">
         <div class="card shadow-sm bg-light m-0" style="width: 250px">
             
-            <img src='/bluepaw/public/img/profile_rect.png' width='' class="card-img-top"/>
+            <img src='/bluepaw/public/img/office_rect.png' width='' class="card-img-top"/>
             
             <div class="card-body ">
                 <!-- <p class="card-text"></p> -->

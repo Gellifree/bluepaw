@@ -1,7 +1,7 @@
 
 
 <!-- Trigger the modal with a button -->
-<button type="button" class="btn btn-dark" data-toggle="modal" data-target="#myModal">Kép feltöltése</button>
+<button type="button" class="btn btn-dark" data-toggle="modal" data-target="#myModal"><?php echo  lang('upload_image'); ?></button>
 
 <!-- Modal -->
 <div id="myModal" class="modal fade shadow" role="dialog">
@@ -10,7 +10,7 @@
     <!-- Modal content-->
     <div class="modal-content">
       <div class="modal-header bg-dark text-white">
-          <h4 class="modal-title">Kép feltöltése</h4>
+          <h4 class="modal-title"> <?php echo lang('upload_image'); ?> </h4>
         <button type="button" class="close text-white" data-dismiss="modal">&times;</button>
         
       </div>
@@ -20,7 +20,7 @@
         
           <label for="file-upload" class="btn btn-light form-control">
               <input id="file-upload" type="file" name="userfile" size="20" class="form-control btn-primary" style="display:none">
-          Fájl kiválasztása
+           <?php echo lang('choose_image'); ?>
           </label>
         <br/>
         <input type="submit" value="upload" class="btn btn-secondary form-control ">
