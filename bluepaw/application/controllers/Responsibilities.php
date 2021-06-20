@@ -24,6 +24,11 @@ class Responsibilities extends CI_Controller{
         $this->lang->load('responsibilities'); 
     }
     
+    public function index()
+    {
+        $this->list();
+    }
+    
     public function list($resp_id = NULL)
     {
         if($resp_id == NULL)

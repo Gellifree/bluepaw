@@ -26,6 +26,11 @@ class Building extends CI_Controller{
         $this->lang->load('region');
     }
     
+    public function index()
+    {
+        $this->list();
+    }
+    
     public function list($building_id = NULL)
     {
         if($building_id == NULL)

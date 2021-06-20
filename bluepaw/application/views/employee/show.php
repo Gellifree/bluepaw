@@ -40,10 +40,12 @@
             <?php echo anchor(base_url('employee/update/'.$record->id), lang('edit'), ['class' => 'btn btn-warning']); ?>
             </div>
             
-            <img src="/bluepaw/public/img/secondary_logo.png" width="180px" class="mx-auto d-block m-3" style="-webkit-filter: grayscale(100%); opacity: 50%;"/>
+            <img src="/bluepaw/public/img/secondary_logo.png" width="170px" class="mx-auto d-block m-3" style="-webkit-filter: grayscale(100%); opacity: 50%;"/>
 
         </div>
 
     </div>
     
 </div>
+
+<?php $this->load->view('common/footer'); ?>

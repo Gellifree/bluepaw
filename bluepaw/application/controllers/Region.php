@@ -24,6 +24,11 @@ class Region extends CI_Controller{
         $this->lang->load('region'); 
     }
     
+    public function index()
+    {
+        $this->list();
+    }
+    
     public function list($region_id = NULL) {
         if($region_id == NULL)
         {

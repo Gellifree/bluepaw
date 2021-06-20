@@ -55,6 +55,14 @@ $route['translate_uri_dashes'] = FALSE;
 
 
 
-$route['telep/list/(:num)'] = 'telep/index/$1';
-$route['telep/list'] = 'telep/index';
-$route['telepek_listaja'] = 'telep/index';
+//$route['telep/list/(:num)'] = 'telep/index/$1';
+//$route['telep/list'] = 'telep/index';
+//$route['telepek_listaja'] = 'telep/index';
+
+$route['regio'] = 'region';
+$route['epulet'] = 'building';
+$route['iroda'] = 'office';
+$route['alkalmazott'] = 'employee';
+$route['kutya'] = 'dog';
+$route['munkakor'] = 'position';
+$route['feladatkor'] = 'responsibilities';

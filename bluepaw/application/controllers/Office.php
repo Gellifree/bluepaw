@@ -26,6 +26,11 @@ class Office extends CI_Controller{
         $this->lang->load('building'); 
     }
     
+    public function index()
+    {
+        $this->list();
+    }
+    
     public function list($office_id = NULL)
     {
         if($office_id == NULL)

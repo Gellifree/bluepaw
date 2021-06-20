@@ -24,6 +24,11 @@ class Position extends CI_Controller{
         $this->lang->load('position'); 
     }
     
+    public function index()
+    {
+        $this->list();
+    }
+    
     public function list($position_id = NULL)
     {
         if($position_id == NULL)
@@ -84,7 +89,7 @@ class Position extends CI_Controller{
         $this->load->library('form_validation');
         
         $this->form_validation->set_rules('nev', lang('position_name'), 'required|min_length[3]');
-        $this->form_validation->set_rules('fizetes', lang('position_payment'), 'required|greater_than[0]');
+        $this->form_validation->set_rules('fizetes', lang('position_payment'), 'required|greater_than[-1]');
         
         if($this->form_validation->run() == TRUE)
         {

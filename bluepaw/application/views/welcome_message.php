@@ -53,7 +53,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     
                     <?php if($this->ion_auth->is_admin()): ?>
                     <li class="list-group-item">
-                        <a href="/bluepaw/auth" class="btn btn-danger">Admin oldal megnyitása</a>
+                        <a href="/bluepaw/auth" class="btn btn-danger"> <?php echo lang('open_admin') ?></a>
                     </li>
                     <?php endif; ?>
                     
@@ -67,6 +67,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </div>
 
     </div>
-
+<?php $this->load->view('common/footer'); ?>
 </body>
 </html>

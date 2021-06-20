@@ -27,6 +27,11 @@ class Employee extends CI_Controller {
         $this->lang->load('office'); 
         $this->lang->load('position'); 
     }
+
+    public function index()
+    {
+        $this->list();
+    }    
     
     public function list($employee_id = NULL)
     {

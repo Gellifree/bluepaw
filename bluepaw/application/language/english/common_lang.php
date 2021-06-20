@@ -51,3 +51,5 @@ $lang['upload_image'] = 'Upload image';
 $lang['choose_image'] = 'Choose image';
 
 $lang['has_title_list'] = 'Responsibilities for the position';
+
+$lang['open_admin'] = 'Open ADMIN page';

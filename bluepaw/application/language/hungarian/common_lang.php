@@ -49,3 +49,5 @@ $lang['choose_image'] = 'Kép kiválasztása';
 
 
 $lang['has_title_list'] = 'Pozícióhoz tartozó feladatkörök';
+
+$lang['open_admin'] = 'ADMIN oldal megnyitása';

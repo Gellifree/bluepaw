@@ -1,4 +1,6 @@
- <nav class="navbar navbar-expand-lg bg-dark navbar-dark shadow">
+
+
+<nav class="navbar navbar-expand-lg bg-dark navbar-dark shadow sticky-top">
   <!-- Brand -->
   
   <a class="navbar-brand" href="/bluepaw/welcome"><img src="/bluepaw/public/img/mainLogo.png" width="120px"/></a>
@@ -12,44 +14,52 @@
 
   <!-- Navbar links -->
   <div class="collapse navbar-collapse" id="collapsibleNavbar">
-    <ul class="navbar-nav">
+    <ul class="nav navbar-nav">
       
       <li class="nav-item">
-        <a class="nav-link" href="/bluepaw/region/list"><?php echo lang('menu_region_page'); ?></a>
+        <a class="nav-link" href="/bluepaw/region"><?php echo lang('menu_region_page'); ?></a>
       </li>
       
       <li class="nav-item">
-        <a class="nav-link" href="/bluepaw/building/list"><?php echo lang('menu_building_page'); ?></a>
+        <a class="nav-link" href="/bluepaw/building"><?php echo lang('menu_building_page'); ?></a>
       </li>
       
       <li class="nav-item">
-        <a class="nav-link" href="/bluepaw/office/list"><?php echo lang('menu_office_page'); ?></a>
+        <a class="nav-link" href="/bluepaw/office"><?php echo lang('menu_office_page'); ?></a>
       </li>
       
             <li class="nav-item">
-        <a class="nav-link" href="/bluepaw/employee/list"><?php echo lang('menu_employee_page'); ?></a>
+        <a class="nav-link" href="/bluepaw/employee"><?php echo lang('menu_employee_page'); ?></a>
       </li>
       
       
       <li class="nav-item">
-        <a class="nav-link" href="/bluepaw/dog/list"><?php echo lang('menu_dog_page'); ?></a>
+        <a class="nav-link" href="/bluepaw/dog"><?php echo lang('menu_dog_page'); ?></a>
       </li>
 
       
       <li class="nav-item">
-        <a class="nav-link" href="/bluepaw/position/list"><?php echo lang('menu_position_page'); ?></a>
+        <a class="nav-link" href="/bluepaw/position"><?php echo lang('menu_position_page'); ?></a>
       </li>
       
       <li class="nav-item">
-        <a class="nav-link" href="/bluepaw/responsibilities/list"><?php echo lang('menu_responsibilities_page'); ?></a>
+        <a class="nav-link" href="/bluepaw/responsibilities"><?php echo lang('menu_responsibilities_page'); ?></a>
       </li>
       
-      <?php if($this->ion_auth->logged_in()): ?>
-      <?php
-        echo '<li>  <a href="/bluepaw/auth/logout" class="btn btn-warning">'. lang('logout') .'</a></li>';
-      ?>
-      <?php endif; ?>
     </ul>
-  </div>
+
+    <ul class="nav navbar-nav ml-auto">
+      <li>
+          <div class="btn-nav">
+              <?php echo '<a href="/bluepaw/auth/logout" class="btn btn-warning form-control">'. lang('logout') .'</a>'; ?>
+          </div>
+      </li>
+    </ul>  
+      
+    </div>
+  
+
+
+
   <?php endif; ?>
 </nav> 

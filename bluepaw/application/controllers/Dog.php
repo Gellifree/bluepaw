@@ -25,6 +25,10 @@ class Dog extends CI_Controller{
         $this->lang->load('dog'); 
         $this->lang->load('building'); 
     }
+    public function index()
+    {
+        $this->list();
+    }
     
     public function list($dog_id = NULL)
     {
