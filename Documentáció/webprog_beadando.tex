@@ -26,6 +26,12 @@
 
 
 \section{Weboldal koncepciója}
+
+\textbf{Github link:}
+\begin{center}
+\textit{	https://github.com/Gellifree/bluepaw.git}
+\end{center}
+
 \subsection{Technikai részletek}
 A beadandó feladatot, az órán is alkalmazott \textit{xampp} szerverrel kívánom megvalósítani, \textit{apache netbeans} fejlesztőkörnyezettel. A Mysql kezelését a videóban is használt, \textit{phpmyadmin} oldalon intézem. Nem fontos részlet, a megvalósítás szempontjából, de a Windows operációs rendszer, virtuális gépként fut.
 
@@ -112,8 +118,21 @@ Hozzuk létre a szükséges kapcsolótáblákat, és illesszük be az idegen kul
 	{\small Az ER modell a kapcsolatokkal}
 \end{center}
 \subsection{SQL parancsok}
-Az SQL parancsok megtalálhatóak az \textit{application/create.sql} fájlban.
+Az \textit{SQL} parancsok megtalálhatóak az \textit{application/create.sql} fájlban. Ebben, minden \textit{SQL} parancs megtalálható, amit manuálisan futtattunk a \textit{phpmyadmin} oldalon keresztül. A végleges adatok természetesen már nem \textit{SQL} parancsokkal kerültek fel a weboldalra, hanem a grafikus felületen keresztül, így azok itt nem rögzítettek.
 \section{Összefoglaló}
+Összességében, a projekt sok hiányossággal rendelkezik. A követelményekből, a fájl feltöltés, megvalósításra került, és integrálva lett, a fájlok letöltésének funkciója, ugyan technikailag megtalálható a projekt forrásállományai között, az semmilyen formában nem lett integrálva a weboldallal, és nem használható, így ez nem tekinthető megvalósítottnak.
+
+A nézetek reszponzívak ugyan, de a táblázatok eseténél a reszponzivitás nagyon kis ablakméretnél megtörhet.
+
+A csoportkezelés technikailag megvalósul, és minden Controller eseténél megtalálható a csoport ellenőrzése, a megfelelő műveleteknél. Általánosan kifejezve a \textit{Controller} nevét követi a \textit{manager} kifejezés.
+
+A gyakorlatban még számos egyéb kényelmi probléma vetül fel. Egy adott munkakörhöz hozzálehet rendelni bármennyi feladatkört, és ellenőrizve is vannak, egyedi validációs függvénnyel a duplikációk, de a felületen, nincs átadva a hozzáadó nézetnek, a munkakör azonosítója, így azt is ki kell választani, amikor feladatkört rendelünk hozzá. Ez kifejezetten kényelmetlen, és megoldásra szorulna, a munkakor paraméterének átadásával.
+
+Az adatbázis felépítése során úgy építettük fel az adatokat, hogy egy alkalmazott egy irodához, nem épülethez rendelt. Ez alapesetben rendben is volna, egészen addig, amíg nem olyan munkakörről van szó, ami nem értelmezhető csak irodára. Például egy takarító alkalmazottat, nem irodához kellene értelmeznünk, hanem épülethez. Bizonyos munkakörök esetében, viszont az iroda megközelítés áll helyt, pl egy adminisztrátori munkakörben. Ennek feloldásához valószínűleg újra kellene tervezni az adatbázist.
+
+Ezenkívül praktikus volna, különféle lekérdezéseket megvalósítani, a listázó nézetek praktikusabbá tétele érdekében. A szűrés funkciója, miszerint egy adott tulajdonság alapján szűrjünk, kifejezetten hasznos lenne. Pl csak azokat az épületeket listázza ki, amik egy adott régióhoz tartoznak.
+
+Ezenkívül, egy egyedi rendezési szempont elkészítése is hasznos lenne. Miszerint, a listázó nézet, valamilyen oszlop alapján rendezett, és ezt a felhasználó változtathatja. Ezt véleményem szerint, úgy lehetne megoldani, hogy a listázó nézetet, elválasztom az egyedi nézettől, és a listázó nézet paraméterét, a rendezés szempontjaként értelmezném. Ezáltal, a megfelelő helyre, a megfelelő id-vel rendelkező linkek alapján, át tudnánk adni a modellen keresztül egy olyan lekérdezést, ahol a rendezés szempontja, a paraméterben kapott mező. Természetesen ebben az esetben, az egyedi nézethez rendelnünk kell egy új függvényt. 
 
 
 \end{document}
